@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.resize-animation-stopper * {
+  animation: none !important;
+  transition: none !important;
+}

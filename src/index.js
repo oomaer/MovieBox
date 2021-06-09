@@ -4,6 +4,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+/*Method to stop transitions on window resizing....
+ dropdown menu will be displayed from top in large screens and from left on mobile and small displays
+ we will disable transitions so if user resizes the window he/she doesn't the 
+ drop down menu going from top to left. */
+let resizeTimer;
+window.addEventListener("resize", () => {
+  document.body.classList.add("resize-animation-stopper");
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    document.body.classList.remove("resize-animation-stopper");
+  }, 400);
+});
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

@@ -1,0 +1,131 @@
+.cover-container{
+    display: flex;
+    flex-grow: 1;
+    align-items: flex-end;
+    height: calc(100vh - 4rem);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color:  var(--home-cover-bg-tint);
+    background-blend-mode: multiply;
+    /* background-attachment: fixed; */
+}
+
+
+
+
+.cover-content{
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    text-shadow: var(--home-cover-text-shadow);
+    font-family: var(--home-cover-fontfamily);
+}
+
+.cover-content .content-details{
+    background: var(--home-cover-text-bg);
+    padding: 0rem 1rem 2rem 3rem;
+    border-radius: 0px 75px 0px 0px;
+    width: 35rem;
+    margin-bottom: 3rem;
+}
+
+.content-details .small-details{
+    margin: 2rem 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cover-content h1{
+    font-size: 4rem;
+    font-family: var(--home-cover-heading-fontfamily);
+    margin: 0;
+}
+
+.covers-list{
+    display: flex;
+    align-items: flex-end;
+    margin: 2.5rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.cover-card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cover-card{
+    
+    width: 8rem;
+    height: 12rem;
+    margin: 0.3rem;
+}
+
+.covers-list .active-cover{
+    border: 2px solid skyblue;
+}
+
+@media only screen and (max-width: 1500px){
+    .cover-card{
+        max-width: 7rem;
+        height: 11rem;
+    }
+
+}
+
+@media only screen and (max-width: 1400px){
+    .cover-card{
+        max-width: 6rem;
+        height: 10rem;
+    }
+
+}
+
+@media only screen and (max-width: 1320px){
+    .cover-card{
+        max-width: 0rem;
+        height: 0rem;
+        border: 7px solid deepskyblue;
+        border-radius: 50%;
+    }
+    .covers-list .active-cover{
+        border: 8px solid deeppink;
+
+        
+    }
+
+}
+@media only screen and (max-width: 845px){
+    .covers-list{
+        margin: 1rem;
+    }
+}
+@media only screen and (max-width: 635px){
+    .cover-content h1{
+        font-size: 3rem;
+    }
+    .cover-content .content-details{
+        width: auto;
+        padding-right: 3rem;
+    }
+}
+@media only screen and (max-width: 440px){
+    .cover-content h1{
+        font-size: 3rem;
+    }
+    .cover-content .content-details{
+        padding-right: 1rem;
+        width: 80%;
+    }
+    :root{
+        font-size: 90%;
+    }
+
+}
+@media only screen and (max-width: 320px){
+    :root{
+        font-size: 80%;
+    }
+}
