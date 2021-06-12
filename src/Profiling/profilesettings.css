@@ -96,6 +96,7 @@ div.profile-lbls>input:hover{
     transition: 0.4s;
     background: var(--settings-confirmbtn-bg);
     color: var(--settings-confirmbtn-fg);
+    border: 1px solid var(--settings-confirmbtn-bg);
 }
 #save-changes-btn:hover{
     background:var(--settings-confirmbtn-bg-hover);

@@ -1,0 +1,112 @@
+.add-content-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--settings-bg);
+    color: var(--settings-fg);
+}
+
+.add-content-main{
+    width: 1000px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.add-content-main h1{
+    color: black;
+    margin: 1rem 1rem ;
+    padding: 0rem 0.2rem; 
+}
+
+.add-content-inputs{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    padding:2rem 2rem;
+    border-radius: 2%;
+    
+}
+
+.add-content-inputs label{
+    color: rgb(65, 64, 64);
+}
+
+.add-content-inputs input, .add-content-inputs select{
+    margin-bottom: 1rem;
+    width: 30rem;
+    color: var(--settings-input-fg);
+    border: 1px solid gray;
+    background: none;
+	border-radius: 3%;
+	padding: 3px 6px;
+}
+
+.add-movie-details, .add-tvshow-details {
+    display: flex;
+    flex-direction: column;
+}
+
+#movie-overview{
+    height: 7rem;
+    width: 35rem;
+    padding: 1rem;
+}
+#add-content-btn{
+    transition-duration: 0.4s;
+    width: 6rem;
+    margin: 1rem;
+    padding: 0.5rem 2rem;
+    background-color: #4CAF50;
+    border: 1px solid #4CAF50;
+    color:white;
+    cursor: pointer;
+}
+#add-content-btn:hover{
+    background: none;
+    color: black;  
+}
+#add-content-status-msg{
+    margin: 1rem;
+    color: red;
+    animation: blinker 1s linear infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@media only screen and (max-width: 690px){
+    #movie-overview{
+        width: 25rem;
+    }
+    .add-content-inputs input, .add-content-inputs select,.add-content-inputs label{
+        width: 20rem;
+    }
+}
+
+@media only screen and (max-width: 530px){
+    .add-content-inputs{
+        padding: 1rem 0.4rem;
+    }
+    #movie-overview{
+        width: 20rem;
+        padding: 0.5rem;
+    }
+}
+
+@media only screen and (max-width: 359px){
+    :root{
+        font-size: 80%;
+    }
+    .add-content-main{
+        padding: 0.2rem;
+    }
+}
+@media only screen and (max-width: 320px){
+    :root{
+        font-size: 65%;
+    }
+}
