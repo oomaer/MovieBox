@@ -17,7 +17,9 @@ class AddContent extends Component {
             cover: '',
             type: 'movie',
             movie: {
-                overview: ''
+                overview: '',
+                budget: '',
+                revenue: ''
             },
             tvshow:{
                 episodes: '',
@@ -88,6 +90,18 @@ class AddContent extends Component {
         }
     }
 
+    onBudgetChange = (event) => {
+        if(!(event.target.value > 2147483646)){
+            this.setState(Object.assign(this.state.movie, {budget: event.target.value}));
+        }
+    }
+
+    onRevenueChange = (event) => {
+        if(!(event.target.value > 2147483646)){
+            this.setState(Object.assign(this.state.movie, {revenue: event.target.value}));
+        }
+    }
+
     validData = () => {
         const {title, releaseDate, runtime, image, cover} = this.state;
         if(title === ''){
@@ -126,7 +140,27 @@ class AddContent extends Component {
                 }
                 else{
                     response.json().then(result => {
-                        this.setState({statusMsg: 'Added Successfully', added_id: result});
+                        this.setState({statusMsg: 'Added Successfully', added_id: result,
+                        title: '',
+                        releaseDate: '',
+                        runtime: '',
+                        tagline: '',
+                        voteAvg: '',
+                        voteCount: '',
+                        popularity: '',
+                        image: '',
+                        cover: '',
+                        type: 'movie',
+                        movie: {
+                            overview: '',
+                            budget: '',
+                            revenue: ''
+                        },
+                        tvshow:{
+                            episodes: '',
+                            seasons: ''
+                        },
+                    });
                     })
                 }
             
@@ -134,6 +168,7 @@ class AddContent extends Component {
             .catch(err => {
                 this.setState({statusMsg: 'Error Connecting to Server'})
             });
+
             }
     }
  
@@ -182,6 +217,10 @@ class AddContent extends Component {
                             (   <div className = 'add-movie-details'>
                                     <label>Movie Overview</label>
                                     <textarea maxLength = '1000' id = 'movie-overview' onChange ={this.onOverViewChange}>{movie.overview}</textarea>
+                                    <label>Budget: </label>
+                                    <input type = 'number' onChange = {this.onBudgetChange} value = {movie.budget}></input>
+                                    <label>Revenue:</label>
+                                    <input type = 'number' onChange = {this.onRevenueChange} value = {movie.revenue}></input>
                                 </div>
                             ):(
                                 <div className = 'add-tvshow-details'>
@@ -195,7 +234,7 @@ class AddContent extends Component {
                             <button id= 'add-content-btn' onClick = {this.addContent}>ADD</button>
                             <label id = 'add-content-status-msg'>{statusMsg}</label>
                             {added_id === '' ? (<div></div>):
-                            (<Link to = {`${this.props.url}/${added_id}`}><label>add more details</label></Link>)}
+                            (<Link to = {`${this.props.url}/${added_id}`}><label id = 'addmoredetailsbtn'>add more details</label></Link>)}
                     </div>
                     
                 </div>

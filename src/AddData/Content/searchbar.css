@@ -3,7 +3,7 @@
 
 .search-container{
   max-width: 350px;
-  border: 1px solid lightgray;
+  border: 1px solid lightslategray;
   border-radius: 5px 5px 0 0;
 }
 .search-container .search-input{
@@ -22,6 +22,7 @@
   box-sizing: border-box;
   font-size: 18px;
   box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
+  color: rgb(48, 55, 61);
 }
 
 .search-input .search-results-box{

@@ -14,12 +14,17 @@
     background-color: white;
 }
 
-.add-content-main h1{
+.add-content-details-content-header{
+    display: flex;
+    align-items: center;
+}
+
+.add-content-details-content-header h1{
     color: black;
     margin: 1rem 1rem ;
     padding: 0rem 0.2rem; 
+    margin-right: 1rem;
 }
-
 .add-content-inputs{
     display: flex;
     flex-direction: column;
@@ -34,13 +39,18 @@
 }
 
 .add-content-inputs input, .add-content-inputs select{
+    height: 30px;
+    width: 100%;
+    outline: none;
+    border: 1px solid lightslategray;
+    color: rgb(48, 55, 61);
+    border-radius: 5px;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
+    font-size: 18px;
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
+    max-width: 350px;
     margin-bottom: 1rem;
-    width: 30rem;
-    color: var(--settings-input-fg);
-    border: 1px solid gray;
-    background: none;
-	border-radius: 3%;
-	padding: 3px 6px;
 }
 
 .add-movie-details, .add-tvshow-details {
@@ -52,6 +62,7 @@
     height: 7rem;
     width: 35rem;
     padding: 1rem;
+    margin-bottom: 1rem;
 }
 #add-content-btn{
     transition-duration: 0.4s;
@@ -71,6 +82,9 @@
     margin: 1rem;
     color: red;
     animation: blinker 1s linear infinite;
+}
+#addmoredetailsbtn{
+    cursor: pointer;
 }
 @keyframes blinker {
   50% {
