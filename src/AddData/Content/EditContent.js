@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import './addcontent.css';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 
-class AddContent extends Component {
-    constructor(){
-        super();
+class EditContent extends Component {
+    constructor(props){
+        super(props);
         this.state = {
+            content_id : this.props.match.params.contentid,
+            content_found: true,
             title: '',
             releaseDate: '',
             runtime: '',
@@ -15,7 +17,7 @@ class AddContent extends Component {
             popularity: '',
             image: '',
             cover: '',
-            type: 'movie',
+            type: '',
             movie: {
                 overview: '',
                 budget: '',
@@ -26,8 +28,54 @@ class AddContent extends Component {
                 seasons: ''
             },
             statusMsg: '',
-            added_id: ''
         }
+    }
+
+    componentDidMount(){
+        fetch('http://localhost:4000/getContentData', {
+                method: 'post',
+                headers : {'Content-Type' : 'application/json'},
+                body: JSON.stringify({
+                    id : this.state.content_id
+                })
+            }).then(response => {
+                if(!response.ok){  
+                    this.setState({content_found: false});  
+                }
+                else{
+                    response.json().then(result => {
+                        this.setState({
+                            title: result.TITLE,
+                            releaseDate: result.RELEASEDATE,
+                            runtime: result.RUNTIME,
+                            tagline: result.TAGLINE,
+                            voteAvg: result.VOTEAVG,
+                            voteCount: result.VOTECOUNT,
+                            popularity: result.POPULARITY,
+                            image: result.IMAGE,
+                            cover: result.COVER,
+                            type: result.TYPE
+                        })
+                        if(result.TYPE === 'movie'){
+                            this.setState(Object.assign(this.state.movie, {
+                                overview: result.movie.OVERVIEW,
+                                budget: result.movie.BUDGET,
+                                revenue: result.movie.REVENUE
+                            }))
+                        }
+                        else if(result.type === 'tvshow'){
+                            this.setState(Object.assign(this.state.tvshow, {
+                                seasons: result.tv_show.seasons,
+                                episodes: result.tv_show.episodes
+                            }))
+                        }
+                    })
+                }
+            
+            })
+            .catch(err => {
+                this.setState({statusMsg: 'Error Connecting to Server'})
+            });
     }
 
     onTitleChange = (event) => {
@@ -126,9 +174,9 @@ class AddContent extends Component {
         return false;
     }
 
-    addContent = () => {
+    confirmEdit = () => {
         if(this.validData()){
-            fetch('http://localhost:4000/addContent', {
+            fetch('http://localhost:4000/editContentData', {
                 method: 'post',
                 headers : {'Content-Type' : 'application/json'},
                 body: JSON.stringify(
@@ -136,31 +184,11 @@ class AddContent extends Component {
                 )
             }).then(response => {
                 if(!response.ok){
-                    this.setState({statusMsg : 'Error Adding data'});    
+                    this.setState({statusMsg : 'Error Editing data'});    
                 }
                 else{
                     response.json().then(result => {
-                        this.setState({statusMsg: 'Added Successfully', added_id: result,
-                        title: '',
-                        releaseDate: '',
-                        runtime: '',
-                        tagline: '',
-                        voteAvg: '',
-                        voteCount: '',
-                        popularity: '',
-                        image: '',
-                        cover: '',
-                        type: 'movie',
-                        movie: {
-                            overview: '',
-                            budget: '',
-                            revenue: ''
-                        },
-                        tvshow:{
-                            episodes: '',
-                            seasons: ''
-                        },
-                    });
+                        this.setState({statusMsg: 'Edited Successfully'});
                     })
                 }
             
@@ -169,14 +197,17 @@ class AddContent extends Component {
                 this.setState({statusMsg: 'Error Connecting to Server'})
             });
 
-            }
+        }
     }
  
 
     render(){
-        const {title, releaseDate, runtime, tagline, voteAvg, voteCount, popularity, image, cover, type, movie, tvshow, statusMsg, added_id} = this.state;
+
+        const {content_found, title, releaseDate, runtime, tagline, voteAvg, voteCount, popularity, image, cover, type, movie, tvshow, statusMsg, added_id} = this.state;
         return(
             <div className = 'add-content-container'>
+                {!content_found ? (<h1>404 not found</h1>)
+                :(
                 <div className = 'add-content-main'>
                     <h1>Add Content</h1>
                     <div className = 'add-content-inputs'>
@@ -207,16 +238,10 @@ class AddContent extends Component {
                         <label>Cover Photo Link</label>
                         <input type = 'url' maxLength = '500' value = {cover} onChange = {this.onCoverChange}></input>
                         
-                        <label>Type</label>
-                        <select value = {type} onChange = {(event) => this.setState({type: event.target.value})}>
-                            <option>movie</option>
-                            <option>tvshow</option>
-                        </select>
-
                             {type === 'movie' ? 
                             (   <div className = 'add-movie-details'>
                                     <label>Movie Overview</label>
-                                    <textarea maxLength = '1000' id = 'movie-overview' onChange ={this.onOverViewChange}>{movie.overview}</textarea>
+                                    <textarea maxLength = '1000' value = {movie.overview} id = 'movie-overview' onChange ={this.onOverViewChange}></textarea>
                                     <label>Budget: </label>
                                     <input type = 'number' onChange = {this.onBudgetChange} value = {movie.budget}></input>
                                     <label>Revenue:</label>
@@ -231,13 +256,14 @@ class AddContent extends Component {
                                 </div>
                             )
                             }
-                            <button id= 'add-content-btn' onClick = {this.addContent}>ADD</button>
+                            <button id= 'add-content-btn' onClick = {this.confirmEdit}>Confirm</button>
                             <label id = 'add-content-status-msg'>{statusMsg}</label>
                             {added_id === '' ? (<div></div>):
-                            (<Link to = {`${this.props.url}/${added_id}/details`}><label id = 'addmoredetailsbtn'>add more details</label></Link>)}
+                            (<Link to = {`${this.props.url}/${added_id}`}><label id = 'addmoredetailsbtn'>edit details</label></Link>)}
                     </div>
                     
                 </div>
+                )}
             </div>
         )   
 
@@ -245,4 +271,4 @@ class AddContent extends Component {
     }
 }
 
-export default AddContent;
+export default withRouter(EditContent);

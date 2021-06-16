@@ -27,7 +27,7 @@ class AddDetails extends Component{
     }
     
     componentDidMount(){
-        fetch('http://localhost:4000/getContentData', {
+        fetch('http://localhost:4000/getContentDetails', {
             method: 'post',
             headers : {'Content-Type' : 'application/json'},
             body: JSON.stringify({

@@ -66,7 +66,7 @@
 }
 #add-content-btn{
     transition-duration: 0.4s;
-    width: 6rem;
+    width: 8rem;
     margin: 1rem;
     padding: 0.5rem 2rem;
     background-color: #4CAF50;
@@ -74,6 +74,7 @@
     color:white;
     cursor: pointer;
 }
+
 #add-content-btn:hover{
     background: none;
     color: black;  
@@ -86,6 +87,7 @@
 #addmoredetailsbtn{
     cursor: pointer;
 }
+
 @keyframes blinker {
   50% {
     opacity: 0.4;
