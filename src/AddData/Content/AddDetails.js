@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
-import AddPeople from './AddPeople';
+import AddCast from './AddCast';
+import AddCrew from './AddCrew';
 import AddElements from './AddElements';
 import AddTVDetails from './AddTVDetails';
 import './adddetails.css';
@@ -89,9 +90,16 @@ class AddDetails extends Component{
                 break;
             default:
         }
-        if(type === 'Cast Members' || type === 'Crew Members'){
+        if(type === 'Cast Members'){
             for(let i = 0; i < array.length; i++){
                 if(array[i].ID === object.ID){
+                    return true;
+                }
+            }
+        }
+        else if(type === 'Crew Members'){
+            for(let i = 0; i < array.length; i++){
+                if(array[i].NAME === object.NAME && array[i].ROLE === object.ROLE){
                     return true;
                 }
             }
@@ -107,7 +115,6 @@ class AddDetails extends Component{
     }
 
     addPerson = (type, member) => {
-        console.log(member);
         if(!(this.containsObject(type, member))){
             if(type === 'Cast Members'){
                 let cast_arr = this.state.added_cast;
@@ -120,15 +127,14 @@ class AddDetails extends Component{
                 this.setState({added_crew: crew_arr});
             }
             
-            fetch('http://localhost:4000/addPerson', {
+            fetch('http://localhost:4000/addPersonLink', {
                 method: 'post',
                 headers : {'Content-Type' : 'application/json'},
                 body: JSON.stringify({
-                    member_id: member.ID,
+                    member: member,
                     content_id: this.state.content_id,
                     type: type,
-                    order: member.order,
-                    character: member.character
+                    
                 }
                 )
             }).then(response => {
@@ -159,11 +165,11 @@ class AddDetails extends Component{
             crew_arr.splice(index, 1);
             this.setState({added_crew: crew_arr});           
         }
-        fetch('http://localhost:4000/removePerson', {
+        fetch('http://localhost:4000/removePersonLink', {
             method: 'post',
             headers : {'Content-Type' : 'application/json'},
             body: JSON.stringify({
-                person_id: member.id,
+                member: member,
                 content_id: this.state.content_id,
                 type: type
             }
@@ -408,8 +414,8 @@ class AddDetails extends Component{
                 {content === undefined ? (<h1>404 not found</h1>)
                 :(<div className = 'add-content-details-main'>
                     <div className = 'add-content-details-content-header'><h1>{content.TITLE}</h1><label>({content.TYPE})</label><label>{content.RELEASEDATE}</label></div>
-                    <AddPeople type = 'Cast Members' added_arr = {added_cast} addItem = {this.addPerson} removeItem = {this.removePerson}/>
-                    <AddPeople type = 'Crew Members' added_arr = {added_crew} addItem = {this.addPerson} removeItem = {this.removePerson}/>
+                    <AddCast type = 'Cast Members' added_arr = {added_cast} addItem = {this.addPerson} removeItem = {this.removePerson}/>
+                    <AddCrew type = 'Crew Members' added_arr = {added_crew} addItem = {this.addPerson} removeItem = {this.removePerson}/>
                     <AddElements type = 'Genres' added_arr = {added_genres} AddElement = {this.AddElement} removeElement = {this.RemoveElement}/>
                     <AddElements type = 'Languages' added_arr = {added_languages} AddElement = {this.AddElement} removeElement = {this.RemoveElement}/>
                     <AddElements type = 'Filming Locations' added_arr = {added_locations} AddElement = {this.AddElement} removeElement = {this.RemoveElement}/>

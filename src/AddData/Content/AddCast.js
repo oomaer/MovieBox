@@ -1,17 +1,13 @@
 
-import SearchBar from './SearchBar';
 import SearchBarForCast from './SearchBarForCast';
 import './addelement.css';
 
-const AddPeople = ({type, added_arr, addItem, removeItem}) => {
+const AddCast = ({type, added_arr, addItem, removeItem}) => {
     return(
         <div className = 'add-content-element-container'>
             <div className = 'add-content-element-content'>
                 <h3>{type}</h3>
-                {type === 'Cast Members' 
-                ? (<SearchBarForCast type = {type} addItem = {addItem}/>)
-                : (<SearchBar type = {type} addItem = {addItem}/>)
-                }
+                <SearchBarForCast type = {type} addItem = {addItem}/>
                 <ul className = 'added-elements'>
                     {added_arr.map((item, index) => {
                         return(
@@ -28,4 +24,4 @@ const AddPeople = ({type, added_arr, addItem, removeItem}) => {
     )
 }
 
-export default AddPeople;
+export default AddCast;

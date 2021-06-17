@@ -10,13 +10,9 @@ function useOutsideAlerter(ref, SearchPeople) {
         function handleClickOutside(event) {
             if (ref.current && !ref.current.contains(event.target)) {
                 document.getElementById("search-results-Cast Members").style.display = 'none';
-                document.getElementById('search-container-Crew Members').style.display = 'block';
             }
             else{
                 document.getElementById("search-results-Cast Members").style.display = 'block';
-                if(SearchPeople.length > 0){    
-                    document.getElementById('search-container-Crew Members').style.display = 'none';
-                }
             }
         }
 
@@ -81,15 +77,7 @@ const SearchBar = ({type, addItem}) => {
         item['character'] = character;
         addItem(type, item);
     }
-    //i have to overflow the results of search on crew members search bar
-    if(SearchPeople.length > 0){
-        document.getElementById('search-container-Crew Members').style.display = 'none';
-    }
-    else{
-        if(document.getElementById('search-container-Crew Members') != null){
-            document.getElementById('search-container-Crew Members').style.display = 'block';
-        }
-    }
+
     return(
             <div className="search-container">
                 <div className="search-input" ref = {wrapperRef}>
