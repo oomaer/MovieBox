@@ -47,7 +47,6 @@ const AddTVDetails = ({type, added_arr, addItem, removeItem}) => {
         removeItem(item, index, type);
     }
 
-    console.log(added_arr);
     return(
         <div className = 'add-content-element-container'>
             <div className = 'add-content-element-content'>

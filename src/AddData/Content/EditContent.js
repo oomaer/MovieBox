@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './addcontent.css';
-import {Link, withRouter} from 'react-router-dom';
+import {Link, withRouter, Redirect} from 'react-router-dom';
 
 class EditContent extends Component {
     constructor(props){
@@ -28,6 +28,7 @@ class EditContent extends Component {
                 seasons: ''
             },
             statusMsg: '',
+            redirect: false
         }
     }
 
@@ -63,10 +64,10 @@ class EditContent extends Component {
                                 revenue: result.movie.REVENUE
                             }))
                         }
-                        else if(result.type === 'tvshow'){
+                        else if(result.TYPE === 'tvshow'){
                             this.setState(Object.assign(this.state.tvshow, {
-                                seasons: result.tv_show.seasons,
-                                episodes: result.tv_show.episodes
+                                seasons: result.tv_show.SEASONS,
+                                episodes: result.tv_show.EPISODES
                             }))
                         }
                     })
@@ -199,13 +200,40 @@ class EditContent extends Component {
 
         }
     }
+
+    confirmDelete = () => {
+        if(this.validData()){
+            fetch('http://localhost:4000/deleteContentData', {
+                method: 'post',
+                headers : {'Content-Type' : 'application/json'},
+                body: JSON.stringify(
+                   {id: this.state.content_id}
+                )
+            }).then(response => {
+                if(!response.ok){
+                    this.setState({statusMsg : 'Error deleting data'});    
+                }
+                else{
+                    response.json().then(result => {
+                        this.setState({redirect: true});
+                    })
+                }
+            
+            })
+            .catch(err => {
+                this.setState({statusMsg: 'Error Connecting to Server'})
+            });
+
+        }
+    }
  
 
     render(){
 
-        const {content_found, title, releaseDate, runtime, tagline, voteAvg, voteCount, popularity, image, cover, type, movie, tvshow, statusMsg, added_id} = this.state;
+        const {content_found, content_id, title, releaseDate, runtime, tagline, voteAvg, voteCount, popularity, image, cover, type, movie, tvshow, statusMsg, redirect} = this.state;
         return(
             <div className = 'add-content-container'>
+                {redirect ? (<Redirect to="/"/>) : null }
                 {!content_found ? (<h1>404 not found</h1>)
                 :(
                 <div className = 'add-content-main'>
@@ -256,15 +284,18 @@ class EditContent extends Component {
                                 </div>
                             )
                             }
-                            <button id= 'add-content-btn' onClick = {this.confirmEdit}>Confirm</button>
+                            <div className = 'edit-and-delete-content-btns'>
+                                <button className= 'add-content-btn' onClick = {this.confirmEdit}>Confirm</button>
+                                <button className= 'add-content-btn' onClick = {this.confirmDelete}>Delete</button>
+                            </div>
                             <label id = 'add-content-status-msg'>{statusMsg}</label>
-                            {added_id === '' ? (<div></div>):
-                            (<Link to = {`${this.props.url}/${added_id}`}><label id = 'addmoredetailsbtn'>edit details</label></Link>)}
+                            <Link to = {`/add/${content_id}/details`}><label id = 'addmoredetailsbtn'>edit details</label></Link>
                     </div>
                     
                 </div>
                 )}
             </div>
+            
         )   
 
 

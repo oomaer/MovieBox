@@ -231,7 +231,7 @@ class AddContent extends Component {
                                 </div>
                             )
                             }
-                            <button id= 'add-content-btn' onClick = {this.addContent}>ADD</button>
+                            <button className= 'add-content-btn' onClick = {this.addContent}>ADD</button>
                             <label id = 'add-content-status-msg'>{statusMsg}</label>
                             {added_id === '' ? (<div></div>):
                             (<Link to = {`${this.props.url}/${added_id}/details`}><label id = 'addmoredetailsbtn'>add more details</label></Link>)}

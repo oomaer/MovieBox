@@ -64,7 +64,7 @@
     padding: 1rem;
     margin-bottom: 1rem;
 }
-#add-content-btn{
+.add-content-btn{
     transition-duration: 0.4s;
     width: 8rem;
     margin: 1rem;
@@ -75,7 +75,7 @@
     cursor: pointer;
 }
 
-#add-content-btn:hover{
+.add-content-btn:hover{
     background: none;
     color: black;  
 }
