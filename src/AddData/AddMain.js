@@ -1,9 +1,11 @@
 import {Route, useRouteMatch, Switch} from "react-router-dom"; 
 import AddContent from './Content/AddContent';
 import AddDetails from './Content/AddDetails';
-import AddPerson from "./Person/AddPerson";
+import AddCelebrity from "./Person/AddCelebrity";
 import EditContent from "./Content/EditContent";
-import EditPerson from './Person/EditPerson';
+import EditCelebrity from './Person/EditCelebrity';
+import AddAwardEvent from "./AwardsNews/AddAwardEvent";
+import AddNews from "./AwardsNews/AddNews"; 
 const AddMain = () => {
     let {path, url} = useRouteMatch();
     return(
@@ -18,11 +20,17 @@ const AddMain = () => {
             <Route path = {`${path}/:contentid/edit`}> 
                 <EditContent />
             </Route>
-            <Route path = {`${path}/people`}> 
-                <AddPerson />
+            <Route path = {`${path}/celebrity`}> 
+                <AddCelebrity />
             </Route>
-            <Route path = {`${path}/editperson/:personid`}> 
-                <EditPerson />
+            <Route path = {`${path}/editcelebrity/:personid`}> 
+                <EditCelebrity />
+            </Route>
+            <Route path = {`${path}/awardsevents`}> 
+                <AddAwardEvent />
+            </Route>
+            <Route path = {`${path}/addnews`}> 
+                <AddNews />
             </Route>
         </Switch>
        </div>

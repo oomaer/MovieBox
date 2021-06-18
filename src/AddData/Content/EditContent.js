@@ -202,29 +202,27 @@ class EditContent extends Component {
     }
 
     confirmDelete = () => {
-        if(this.validData()){
-            fetch('http://localhost:4000/deleteContentData', {
-                method: 'post',
-                headers : {'Content-Type' : 'application/json'},
-                body: JSON.stringify(
-                   {id: this.state.content_id}
-                )
-            }).then(response => {
-                if(!response.ok){
-                    this.setState({statusMsg : 'Error deleting data'});    
-                }
-                else{
-                    response.json().then(result => {
-                        this.setState({redirect: true});
-                    })
-                }
-            
-            })
-            .catch(err => {
-                this.setState({statusMsg: 'Error Connecting to Server'})
-            });
+        fetch('http://localhost:4000/deleteContentData', {
+            method: 'post',
+            headers : {'Content-Type' : 'application/json'},
+            body: JSON.stringify(
+                {id: this.state.content_id}
+            )
+        }).then(response => {
+            if(!response.ok){
+                this.setState({statusMsg : 'Error deleting data'});    
+            }
+            else{
+                response.json().then(result => {
+                    this.setState({redirect: true});
+                })
+            }
+        
+        })
+        .catch(err => {
+            this.setState({statusMsg: 'Error Connecting to Server'})
+        });
 
-        }
     }
  
 
@@ -237,7 +235,7 @@ class EditContent extends Component {
                 {!content_found ? (<h1>404 not found</h1>)
                 :(
                 <div className = 'add-content-main'>
-                    <h1>Add Content</h1>
+                    <h1>Edit Content</h1>
                     <div className = 'add-content-inputs'>
                         <label>Title</label>
                         <input value = {title} maxLength = '55' onChange = {this.onTitleChange}></input>
