@@ -15,6 +15,7 @@
     align-items: center;
     justify-content: center;
     margin: 0 0.3rem;
+    max-width: fit-content;
 }
 .added-element-card-name{
     margin-right: 0.5rem;

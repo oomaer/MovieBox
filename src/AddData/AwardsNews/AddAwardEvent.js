@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import '../Content/addcontent.css';
-
+import SearchBar from '../Content/SearchBar';
 class AddAwardEvent extends Component {
     constructor(){
         super();
@@ -9,6 +9,7 @@ class AddAwardEvent extends Component {
             year: '',
             discription: '',
             image: '',
+            content: {},
             statusMsg: '',
         }
     }
@@ -29,9 +30,16 @@ class AddAwardEvent extends Component {
         this.setState({discription: event.target.value});
     }
 
+    setContent = (object) => {
+        this.setState({content: object});
+    }
+
+    removeContent = () => {
+        this.setContent({content: {}});
+    }
 
     validData = () => {
-        const {name, year, discription, image} = this.state;
+        const {name, year, discription, image, content} = this.state;
         if(name === ''){
             this.setState({statusMsg: 'Name cannot be left empty'});
         }
@@ -43,6 +51,9 @@ class AddAwardEvent extends Component {
         }
         else if(image === ''){
             this.setState({statusMsg: 'Image link is required'});
+        }
+        else if(content.ID === undefined){
+            this.setState({statusMsg: 'Please Specify Content'});
         }
         else{
             this.setState({statusMsg: ''})
@@ -64,7 +75,13 @@ class AddAwardEvent extends Component {
                     this.setState({statusMsg : 'Error Adding data'});    
                 }
                 else{
-                    this.setState({statusMsg: 'Added Successfully'});
+                    this.setState({statusMsg: 'Added Successfully',
+                                    name : '',
+                                    year: '',
+                                    discription: '',
+                                    image: '',
+                                    content: {},
+                    });
                 }
             
             })
@@ -77,7 +94,7 @@ class AddAwardEvent extends Component {
     
 
     render(){
-        const {name, year, discription, image, statusMsg} = this.state;
+        const {name, year, discription, image, content, statusMsg} = this.state;
         return(
             <div className = 'add-content-container'>
                 <div className = 'add-content-main'>
@@ -94,7 +111,16 @@ class AddAwardEvent extends Component {
                         
                         <label>Image Link</label>
                         <input type = 'url' maxLength = '500' value = {image} onChange = {this.onImageChange}></input>
-                        
+
+                        <label>Content</label>
+                        <SearchBar type = 'AwardsNews' addItem = {this.setContent} />
+                        {content.TITLE === undefined ? (null): (
+                        <div style = {{'margin-top' : '1rem'}} className = 'added-element-card'>
+                            <label className = 'added-element-card-name'>{`${content.TITLE}`}</label>
+                            <label onClick = {this.removeContent} className = 'added-element-card-cross'>x</label>
+                        </div>
+                        )}
+
                         <button className= 'add-content-btn' onClick = {this.addAwardEvent}>ADD</button>
                         <label id = 'add-content-status-msg'>{statusMsg}</label>
 
