@@ -83,11 +83,18 @@ class AddAwardEvent extends Component {
                     this.setState({statusMsg : 'Error Adding data'});    
                 }
                 else{
-                    this.setState({statusMsg: 'Added Successfully'});
+                    this.setState({statusMsg: 'Added Successfully',
+                                    name : '',
+                                    discription: '',
+                                    publishDate : '',
+                                    popularity: '',
+                                    image: '',
+                                    content: {},
+                    });
                 }
             
             })
-            .catch(err => {
+            .catch(err => { 
                 this.setState({statusMsg: 'Error Connecting to Server'})
             });
 

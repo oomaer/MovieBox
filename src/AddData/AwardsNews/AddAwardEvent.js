@@ -89,7 +89,7 @@ class AddAwardEvent extends Component {
                 this.setState({statusMsg: 'Error Connecting to Server'})
             });
 
-            }
+        }
     }
     
 
