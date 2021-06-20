@@ -6,6 +6,8 @@ import EditContent from "./Content/EditContent";
 import EditCelebrity from './Person/EditCelebrity';
 import AddAwardEvent from "./AwardsNews/AddAwardEvent";
 import AddNews from "./AwardsNews/AddNews"; 
+import EditNews from './AwardsNews/EditNews';
+import EditAwardEvent from './AwardsNews/EditAwardEvent';
 const AddMain = () => {
     let {path, url} = useRouteMatch();
     return(
@@ -29,8 +31,14 @@ const AddMain = () => {
             <Route path = {`${path}/awardsevents`}> 
                 <AddAwardEvent />
             </Route>
-            <Route path = {`${path}/addnews`}> 
+            <Route path = {`${path}/editawardevent/:id`}> 
+                <EditAwardEvent />
+            </Route>
+            <Route path = {`${path}/addNews`}> 
                 <AddNews />
+            </Route>
+            <Route path = {`${path}/editnews/:id`}> 
+                <EditNews />
             </Route>
         </Switch>
        </div>

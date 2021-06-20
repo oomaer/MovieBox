@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import '../Content/addcontent.css';
 import SearchBar from '../Content/SearchBar';
-class AddNews extends Component {
-    constructor(){
-        super();
+import {withRouter, Redirect} from 'react-router-dom';
+class EditNews extends Component {
+    constructor(props){
+        super(props);
         this.state = {
+            id: this.props.match.params.id,
             name : '',
             discription: '',
             publishDate : '',
@@ -12,7 +14,41 @@ class AddNews extends Component {
             image: '',
             content: {},
             statusMsg: '',
+            found: true,
+            redirect: false
         }
+    }
+
+    componentDidMount(){
+        fetch('http://localhost:4000/getNews', {
+            method: 'post',
+            headers : {'Content-Type' : 'application/json'},
+            body: JSON.stringify(
+                {id : this.state.id}
+            )
+        }).then(response => {
+            if(!response.ok){
+                this.setState({found: false});    
+            }
+            else{
+                response.json().then(result => {
+                    console.log(result)
+                    this.setState({
+                        name : result.NAME,
+                        discription: result.DISCRIPTION,
+                        publishDate : result.PUBLISHDATE,
+                        popularity: result.POPULARITY,
+                        image: result.IMAGE,
+                        content: result.content,
+                    });
+                })
+            }
+        
+        })
+        .catch(err => { 
+            this.setState({statusMsg: 'Error Connecting to Server'})
+        });
+
     }
 
     onNameChange = (event) => {
@@ -70,9 +106,9 @@ class AddNews extends Component {
         return false;
     }
 
-    addNews = () => {
+    confirmEdit = () => {
         if(this.validData()){
-            fetch('http://localhost:4000/addNews', {
+            fetch('http://localhost:4000/editNews', {
                 method: 'post',
                 headers : {'Content-Type' : 'application/json'},
                 body: JSON.stringify(
@@ -80,17 +116,10 @@ class AddNews extends Component {
                 )
             }).then(response => {
                 if(!response.ok){
-                    this.setState({statusMsg : 'Error Adding data'});    
+                    this.setState({statusMsg : 'Error Editing data'});    
                 }
                 else{
-                    this.setState({statusMsg: 'Added Successfully',
-                                    name : '',
-                                    discription: '',
-                                    publishDate : '',
-                                    popularity: '',
-                                    image: '',
-                                    content: {},
-                    });
+                    this.setState({statusMsg: "Edited Successfully"});
                 }
             
             })
@@ -101,13 +130,37 @@ class AddNews extends Component {
             }
     }
 
+    confirmDelete = () => {
+            fetch('http://localhost:4000/deleteNews', {
+                method: 'post',
+                headers : {'Content-Type' : 'application/json'},
+                body: JSON.stringify(
+                    {id: this.state.id}
+                )
+            }).then(response => {
+                if(!response.ok){
+                    this.setState({statusMsg : 'Error Deleting News'});    
+                }
+                else{
+                    this.setState({redirect: true});
+                }
+            
+            })
+            .catch(err => { 
+                this.setState({statusMsg: 'Error Connecting to Server'})
+            });
+
+    }
+
 
     render(){
-        const {name, discription, publishDate, popularity, image, content, statusMsg} = this.state;
+        const {name, discription, publishDate, popularity, image, content, statusMsg, found, redirect} = this.state;
         return(
             <div className = 'add-content-container'>
+                {redirect ? (<Redirect to="/"/>) : null }
+                {!found ? (<h1>404 not found</h1>):(
                 <div className = 'add-content-main'>
-                    <h1>Add News</h1>
+                    <h1>Edit News</h1>
                     <div className = 'add-content-inputs'>
                         <label>Name</label>
                         <input value = {name} maxLength = '100' onChange = {this.onNameChange}></input>
@@ -133,16 +186,20 @@ class AddNews extends Component {
                         </div>
                         )}
 
-                        <button className= 'add-content-btn' onClick = {this.addNews}>ADD</button>
+                        <div className = 'edit-and-delete-content-btns'>
+                            <button className= 'add-content-btn' onClick = {this.confirmEdit}>Confirm</button>
+                            <button className= 'add-content-btn' onClick = {this.confirmDelete}>Delete</button>
+                        </div>
                         <label id = 'add-content-status-msg'>{statusMsg}</label>
 
                     </div>
                     
                 </div>
+                )}
             </div>
         )   
 
     }
 }
 
-export default AddNews;
+export default withRouter(EditNews);
