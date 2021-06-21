@@ -13,13 +13,13 @@ const AddMain = () => {
     return(
       <div className = 'add-main'>
         <Switch>
-            <Route path = {`${path}/add`}> 
+            <Route path = {`${path}/addcontent`}> 
                 <AddContent url = {url}/>  
             </Route>
             <Route path = {`${path}/:contentid/details`}> 
                 <AddDetails />
             </Route>
-            <Route path = {`${path}/:contentid/edit`}> 
+            <Route path = {`${path}/editcontent/:contentid`}> 
                 <EditContent />
             </Route>
             <Route path = {`${path}/celebrity`}> 

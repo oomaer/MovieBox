@@ -58,7 +58,7 @@
     flex-direction: column;
 }
 
-#movie-overview{
+#overview-textarea{
     height: 7rem;
     width: 35rem;
     padding: 1rem;

@@ -13,11 +13,11 @@ class AddContent extends Component {
             voteAvg: '',
             voteCount: '',
             popularity: '',
+            overview: '',
             image: '',
             cover: '',
             type: 'movie',
             movie: {
-                overview: '',
                 budget: '',
                 revenue: ''
             },
@@ -75,7 +75,7 @@ class AddContent extends Component {
     }
 
     onOverViewChange = (event) => {
-        this.setState(Object.assign(this.state.movie, {overview: event.target.value}));
+        this.setState({overview: event.target.value});
     }
 
     onSeasonChange = (event) => {
@@ -148,11 +148,11 @@ class AddContent extends Component {
                         voteAvg: '',
                         voteCount: '',
                         popularity: '',
+                        overview: '',
                         image: '',
                         cover: '',
                         type: 'movie',
                         movie: {
-                            overview: '',
                             budget: '',
                             revenue: ''
                         },
@@ -174,7 +174,7 @@ class AddContent extends Component {
  
 
     render(){
-        const {title, releaseDate, runtime, tagline, voteAvg, voteCount, popularity, image, cover, type, movie, tvshow, statusMsg, added_id} = this.state;
+        const {title, releaseDate, runtime, tagline, voteAvg, voteCount, popularity, overview, image, cover, type, movie, tvshow, statusMsg, added_id} = this.state;
         return(
             <div className = 'add-content-container'>
                 <div className = 'add-content-main'>
@@ -201,6 +201,9 @@ class AddContent extends Component {
                         <label>Popularity</label>
                         <input type = 'number' value = {popularity} onChange = {this.onPopularityChange}></input>
                         
+                        <label>Overview</label>
+                        <textarea maxLength = '1000' id = 'overview-textarea' onChange ={this.onOverViewChange}>{overview}</textarea>
+
                         <label>Image Link</label>
                         <input type = 'url' maxLength = '500' value = {image} onChange = {this.onImageChange}></input>
                         
@@ -215,8 +218,6 @@ class AddContent extends Component {
 
                             {type === 'movie' ? 
                             (   <div className = 'add-movie-details'>
-                                    <label>Movie Overview</label>
-                                    <textarea maxLength = '1000' id = 'movie-overview' onChange ={this.onOverViewChange}>{movie.overview}</textarea>
                                     <label>Budget: </label>
                                     <input type = 'number' onChange = {this.onBudgetChange} value = {movie.budget}></input>
                                     <label>Revenue:</label>

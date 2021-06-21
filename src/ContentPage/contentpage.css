@@ -1,0 +1,26 @@
+.contentpage-container{
+    display: flex;
+    justify-content: center;
+}
+
+.contentpage-content{
+    width: 100vw;
+}
+
+.cover-content{
+    background: LINEAR-GRADIENT(TO top, RGB(0, 0, 0, 1), RGB(0, 0, 0, 0.6));
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.cover-content img{
+    width: 14rem;
+    height: 21rem;
+}
+
+.contentpage-content-details{
+    padding: 3rem 1rem 2rem 3rem;
+    width: 50rem;
+    background: none;
+}

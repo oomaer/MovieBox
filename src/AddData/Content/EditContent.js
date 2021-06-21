@@ -15,11 +15,11 @@ class EditContent extends Component {
             voteAvg: '',
             voteCount: '',
             popularity: '',
+            overview : '',
             image: '',
             cover: '',
             type: '',
             movie: {
-                overview: '',
                 budget: '',
                 revenue: ''
             },
@@ -53,13 +53,13 @@ class EditContent extends Component {
                             voteAvg: result.VOTEAVG,
                             voteCount: result.VOTECOUNT,
                             popularity: result.POPULARITY,
+                            overview: result.OVERVIEW,
                             image: result.IMAGE,
                             cover: result.COVER,
                             type: result.TYPE
                         })
                         if(result.TYPE === 'movie'){
                             this.setState(Object.assign(this.state.movie, {
-                                overview: result.movie.OVERVIEW,
                                 budget: result.movie.BUDGET,
                                 revenue: result.movie.REVENUE
                             }))
@@ -124,7 +124,7 @@ class EditContent extends Component {
     }
 
     onOverViewChange = (event) => {
-        this.setState(Object.assign(this.state.movie, {overview: event.target.value}));
+        this.setState({overview: event.target.value});
     }
 
     onSeasonChange = (event) => {
@@ -228,7 +228,7 @@ class EditContent extends Component {
 
     render(){
 
-        const {content_found, content_id, title, releaseDate, runtime, tagline, voteAvg, voteCount, popularity, image, cover, type, movie, tvshow, statusMsg, redirect} = this.state;
+        const {content_found, content_id, title, releaseDate, runtime, tagline, voteAvg, voteCount, popularity, overview, image, cover, type, movie, tvshow, statusMsg, redirect} = this.state;
         return(
             <div className = 'add-content-container'>
                 {redirect ? (<Redirect to="/"/>) : null }
@@ -258,6 +258,9 @@ class EditContent extends Component {
                         <label>Popularity</label>
                         <input type = 'number' value = {popularity} onChange = {this.onPopularityChange}></input>
                         
+                        <label>Overview</label>
+                        <textarea maxLength = '1000' value = {overview} id = 'overview-textarea' onChange ={this.onOverViewChange}></textarea>
+
                         <label>Image Link</label>
                         <input type = 'url' maxLength = '500' value = {image} onChange = {this.onImageChange}></input>
                         
@@ -266,8 +269,6 @@ class EditContent extends Component {
                         
                             {type === 'movie' ? 
                             (   <div className = 'add-movie-details'>
-                                    <label>Movie Overview</label>
-                                    <textarea maxLength = '1000' value = {movie.overview} id = 'movie-overview' onChange ={this.onOverViewChange}></textarea>
                                     <label>Budget: </label>
                                     <input type = 'number' onChange = {this.onBudgetChange} value = {movie.budget}></input>
                                     <label>Revenue:</label>

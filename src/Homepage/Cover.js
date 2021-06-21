@@ -60,7 +60,7 @@ const Cover = () => {
                         <label id = 'cover-genres'> | {data[currentIndex][5]}</label>
                         <label> | {data[currentIndex][3] + ' minutes'}</label>
                     </div>
-                    <Link className = 'link' to = '/home'>
+                    <Link className = 'link' to = {`/content/${data[currentIndex][0]}`}>
                         <h1>{data[currentIndex][1]}</h1>
                     </Link>
                 </div>

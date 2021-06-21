@@ -1,0 +1,32 @@
+.contentpage-container{
+    display: flex;
+    justify-content: center;
+}
+
+.contentpage-content{
+    width: 100vw;
+}
+
+.cover-content{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    flex-wrap: wrap;
+    height: auto;
+}
+
+.cover-content iframe{
+    width: 1280px;
+    height: 720px;
+}
+
+.cover-content img{
+    width: 14rem;
+    height: 21rem;
+}
+
+.contentpage-content-details{
+    background: var(--home-cover-text-bg);
+    padding: 3rem 1rem 2rem 3rem;
+    width: 50rem;
+}

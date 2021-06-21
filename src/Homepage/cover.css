@@ -14,7 +14,6 @@
 .cover-content{
     flex-grow: 1;
     display: flex;
-    justify-content: space-between;
     text-shadow: var(--home-cover-text-shadow);
     font-family: var(--home-cover-fontfamily);
 }
