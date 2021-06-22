@@ -1,6 +1,9 @@
 .add-content-element-container{
     display: flex;
 }
+.add-content-element-content{
+    flex-grow:1;
+}
 .add-content-element-container ul {
     list-style: none;
     padding: 0;

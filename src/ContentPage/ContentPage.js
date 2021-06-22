@@ -1,16 +1,25 @@
 import {Component} from 'react';
 import {withRouter} from 'react-router-dom';
-import '../Homepage/cover.css';
 import './contentpage.css';
-
+import ContentPageCover from './ContentPageCover';
+import ContentDetailsCard from './ContentDetailsCard';
 class ContentPage extends Component {
 
     constructor(props){
         super(props);
         this.state = {
             id : this.props.match.params.id,
-            content: {},
-            details: {},
+            content: {RELEASEDATE: ''},
+            details: {  
+                        creators: [],
+                        genres: [],
+                        pictures: [],
+                        cast: [],
+                        crew: [],
+                        plot_keywords : [],
+                        languages: [],
+                        locations: [],
+                        production_co: []},
             found: true
             
         }
@@ -38,6 +47,7 @@ class ContentPage extends Component {
                 this.setState({statusMsg: 'Error Connecting to Server'})
             });
 
+            
             fetch('http://localhost:4000/getContentDetails', {
                 method: 'post',
                 headers : {'Content-Type' : 'application/json'},
@@ -59,27 +69,18 @@ class ContentPage extends Component {
             .catch(err => {
                 this.setState({statusMsg: 'Error Connecting to Server'})
             });
+
     }
 
 
     render(){
-        
-        const {content} = this.state
-        const backgroundimage = {'background-image': `url(${content.COVER})`};
+        const {content, details} = this.state
         return(
             <div className = 'contentpage-container'>
                 <div className = 'contentpage-content'>
-                    <div className = 'cover-container' style = {backgroundimage}>
-                        <div className = 'cover-content'>
-                            <img alt = 'movie' src = {content.IMAGE}></img>
-                            <div className = 'contentpage-content-details'> 
-                                <h1>{content.TITLE}</h1>
-                                <p>{content.OVERVIEW}</p>
-                            </div>
-                        </div>
-                    </div>
+                    <ContentPageCover content = {content} details = {details}/>
+                    <ContentDetailsCard content = {content} details = {details}/>
                 </div>
-                
             </div>
         )
     }

@@ -37,7 +37,12 @@ const AddElements = ({type, added_arr, AddElement, removeElement}) =>{
                     {added_arr.map((item, index) => {
                         return(
                             <li className = 'added-element-card'>
+                                {type === 'Pictures' ? (
+                                    <label className = 'added-element-card-name'>{item.LINK}</label>
+                                ):
+                                (
                                     <label className = 'added-element-card-name'>{item.NAME}</label>
+                                )}
                                     <label className = 'added-element-card-cross' onClick = {() => onCrossClick(item, index)}>x</label>
                             </li>
                         )

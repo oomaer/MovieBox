@@ -22,7 +22,7 @@ const AddMain = () => {
             <Route path = {`${path}/editcontent/:contentid`}> 
                 <EditContent />
             </Route>
-            <Route path = {`${path}/celebrity`}> 
+            <Route path = {`${path}/addcelebrity`}> 
                 <AddCelebrity />
             </Route>
             <Route path = {`${path}/editcelebrity/:personid`}> 

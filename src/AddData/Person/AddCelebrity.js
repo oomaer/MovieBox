@@ -87,7 +87,15 @@ class AddCelebrity extends Component {
                     this.setState({statusMsg : 'Error Adding data'});    
                 }
                 else{
-                    this.setState({statusMsg: 'Added Successfully'});
+                    this.setState({statusMsg: 'Added Successfully',
+                    name : '',
+                    gender: '',
+                    department: '',
+                    popularity: '',
+                    birthdate: '',
+                    biography: '',
+                    image: ''
+                    });
                     response.json().then(result => {
                         this.setState({added_id: result});
                     })
@@ -188,7 +196,7 @@ class AddCelebrity extends Component {
                         <input type = 'number' value = {popularity} onChange = {this.onPopularityChange}></input> 
                         
                         <label>Biography</label>
-                        <textarea maxLength = '1000' id = 'overview-textarea' value ={biography} onChange ={this.onBiographyChange}></textarea>
+                        <textarea maxLength = '1500' id = 'overview-textarea' value ={biography} onChange ={this.onBiographyChange}></textarea>
                         
                         <label>Date of Birth: </label>
                         <input type = 'date' onChange = {this.onBirthdateChange} value = {birthdate}></input>

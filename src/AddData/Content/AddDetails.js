@@ -49,9 +49,15 @@ class AddDetails extends Component{
                         added_languages: result.languages,
                         added_locations: result.locations,
                         added_productionCo: result.production_co,
-                        added_plotKeywords: result.plot_keywords
+                        added_plotKeywords: result.plot_keywords,
+                        added_pictures: result.pictures,
                         
                     })
+                    if(result.content.TYPE === 'tvshow'){
+                        this.setState({           
+                            added_seasons: result.seasons,
+                            added_creators: result.creators})
+                    }
                 })
             }
         
@@ -221,7 +227,7 @@ class AddDetails extends Component{
                     break;
                 case 'Pictures':
                     temparr = this.state.added_pictures;
-                    temparr.push({NAME: element});
+                    temparr.push({LINK: element});
                     this.setState({added_pictures: temparr});
                     break;
                 default:
@@ -291,7 +297,7 @@ class AddDetails extends Component{
             method: 'post',
             headers : {'Content-Type' : 'application/json'},
             body: JSON.stringify({
-                value: element.NAME,
+                object: element,
                 content_id: this.state.content_id,
                 type: type
             }

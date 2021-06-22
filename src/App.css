@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 @import url('https://fonts.googleapis.com/css2?family=Poller+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@100&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=PT+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 
 :root{
+
   /*sign up/ sign in */
   --background-color: black;
   --registration-card-color: #f6f5f7;;
@@ -76,8 +76,8 @@
   --home-cover-text-bg:  LINEAR-GRADIENT(TO RIGHT top, RGB(0, 0, 0, 0.7), RGB(0, 0, 0, 0.7));
   --home-cover-text-shadow:   0.05em 0 black,0 0.05em black, -0.05em 0 black, 0 -0.05em black,
   -0.05em -0.05em black,  -0.05em 0.05em black, 0.05em -0.05em black,  0.05em 0.05em black;
-  --home-cover-heading-fontfamily: 'Josefin Sans', sans-serif;
-  --home-cover-fontfamily: 'PT Serif', serif;
+  --home-cover-heading-fontfamily: 'Noto Sans', sans-serif;
+  --home-cover-fontfamily: 'Roboto', serif;
 
   /*footer */
   --footer-bg: rgb(46, 10, 10);
@@ -86,6 +86,22 @@
   --footer-english-lbl-color: rgb(200, 200, 200);
   --footer-spanish-lbl-fontfamily: 'Dancing Script', cursive;
   --footer-english-lbl-fontfamily: 'Montserrat', sans-serif;
+
+  /* Content Card */
+  --content-card-container-bg: black;
+  --content-card-container-fg: black;
+  --content-card-topbar-bg: #e32b37;
+  --content-card-topbar-fg: white;
+  --content-card-topbar-fg2: black;
+  --content-card-body-bg: #0d1117;
+  --content-card-body-fg: #f0f6fc;
+  --content-card-body-fg2: #a5a1a1;
+  --content-card-body-pictures-bg: #202225;
+  --content-overivew-fontfamily: 'Montserrat', sans-serif;
+
+
+
+
 }
 
 .app{

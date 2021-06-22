@@ -30,8 +30,6 @@ const SearchBar = ({type, addItem}) => {
 
     const [searchInput, setSearchInput] = useState('');
     const [SearchPeople, setSearchPeople] = useState([]);
-    const [character, setCharacter] = useState('');
-    const [order, setOrder] = useState('');
     const wrapperRef = useRef(null);
     useOutsideAlerter(wrapperRef, SearchPeople);
 
@@ -39,8 +37,6 @@ const SearchBar = ({type, addItem}) => {
         setSearchInput(event.target.value);
         if(event.target.value === ''){
             setSearchPeople([]);
-            setOrder('');
-            setCharacter('');
         }
         else{
             fetch('http://localhost:4000/search', {
@@ -57,6 +53,8 @@ const SearchBar = ({type, addItem}) => {
                     }
                     else{
                         response.json().then(result => {
+                            result.order = '';
+                            result.character = '';
                             setSearchPeople(result);
                         })
                     }
@@ -71,11 +69,19 @@ const SearchBar = ({type, addItem}) => {
     const onListItemClick = (item) => {
         setSearchInput('');
         setSearchPeople([]);
-        setOrder('');
-        setCharacter('');
-        item['order'] = order;
-        item['character'] = character;
         addItem(type, item);
+    }
+
+    const setCharacter = (event, index) => {
+        let temparr = SearchPeople;
+        temparr[index].character = event.target.value;
+        setSearchPeople(temparr)
+    }
+
+    const setOrder = (event, index) => {
+        let temparr = SearchPeople;
+        temparr[index].order = event.target.value;
+        setSearchPeople(temparr)
     }
 
     return(
@@ -89,9 +95,9 @@ const SearchBar = ({type, addItem}) => {
                                     <div className = 'cast-search-list-top'>
                                         <label>{item.NAME}</label>
                                         <div className = 'searchbarforcast-inputs'>    
-                                            <input value = {character} onChange = {(event) => setCharacter(event.target.value)} placeholder = 'character'></input>
+                                            <input value = {item.character} onChange = {(event) => setCharacter(event, index)} placeholder = 'character'></input>
                                             <div className = 'cast-search-item-cast-btm-row'>
-                                                <input value = {order} onChange = {(event) => setOrder(event.target.value)} placeholder = 'order' type = 'number'></input>
+                                                <input value = {item.order} onChange = {(event) => setOrder(event, index)} placeholder = 'order' type = 'number'></input>
                                                 <button onClick = {() => onListItemClick(item)}>Add</button>
                                             </div>
                                         </div>
