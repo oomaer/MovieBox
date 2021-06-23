@@ -152,7 +152,7 @@ class EditContent extends Component {
     }
 
     validData = () => {
-        const {title, releaseDate, runtime, image, cover} = this.state;
+        const {title, releaseDate, runtime, image, cover, type, movie} = this.state;
         if(title === ''){
             this.setState({statusMsg: 'Title cannot be left empty'});
         }
@@ -167,6 +167,12 @@ class EditContent extends Component {
         }
         else if(cover === ''){
             this.setState({statusMsg: 'Cover Photo link is required'});
+        }
+        else if(type === 'movie' && movie.budget === ''){
+            this.setState({statusMsg: 'Budget is required'});
+        }
+        else if(type === 'movie' && movie.revenue === ''){
+            this.setState({statusMsg: 'Revenue is required'});
         }
         else{
             this.setState({statusMsg: ''})

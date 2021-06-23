@@ -1,0 +1,26 @@
+.newawardevent-container{
+    padding: 2rem 3rem;
+    
+}
+.newawardevent-content{
+    max-width: 60rem;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+}
+.newawardevent-content h1{
+    margin:0;
+}
+.newsawardsevents-date{
+    margin-bottom: 1rem;
+}
+.newsawardevent-image{
+    max-width: 50rem;
+    max-height: 30rem;
+    margin:2rem;
+}
+
+.newsawardevent-discription{
+    border-bottom: 1px solid rgb(53, 53, 53);
+    padding-bottom: 2rem;
+}

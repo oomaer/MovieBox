@@ -1,9 +1,31 @@
-import { useRouteMatch } from 'react-router';
+import  {useState} from 'react';
 import './contentdetailscard.css';
 
 const ContentDetailsCard = ({content, details}) => {
-    let {path} = useRouteMatch();
-    console.log(details)
+    const [currSeasonIndex, setCurrSeasonIndex] = useState(0);
+    const [seasoncardAnimation, setSeasonCardAnimation] = useState('')
+
+    console.log(details);
+    console.log(content);
+
+    const previousSeason = () => {
+        if(currSeasonIndex > 0){
+            setCurrSeasonIndex(currSeasonIndex - 1);
+            setSeasonCardAnimation('animate__animated animate__fadeInLeft');
+        }
+    }
+    
+    const nextSeason = () => {
+        if(currSeasonIndex < details.seasons.length){
+            setCurrSeasonIndex(currSeasonIndex + 1);
+            setSeasonCardAnimation('animate__animated animate__fadeInRight');
+        }
+    }
+
+    let seasonbackground;
+    if(content.TYPE === 'tvshow'){
+       seasonbackground = {'background-image': `url(${details.seasons[currSeasonIndex].IMAGE})`};
+    }
     return(
         <div className = 'content-details-card-container'>
             <div className = 'content-details-card'>
@@ -40,7 +62,7 @@ const ContentDetailsCard = ({content, details}) => {
                 <div className = 'content-details-card-body'>
                     <div className = 'content-details-card-body-details'>
                         <div className = 'card-body-details-topdetails'>
-                            <img alt = 'content' src = {content.IMAGE}></img>
+                            <img id = 'content-main-image' alt = 'content' src = {content.IMAGE}></img>
                             <div className = 'card-details-overview-stars-crew'>
                                 <p id = 'content-details-card-overview'>{content.OVERVIEW}</p>
                                 {content.TYPE === 'movie' 
@@ -62,7 +84,7 @@ const ContentDetailsCard = ({content, details}) => {
                                 (
                                     <div className = 'card-details-overview-stars-crew-crew'>
                                         <label>Creators:  </label> 
-                                        {details.creators.map((index, item) => {
+                                        {details.creators.map((item, index) => {
                                             if(index === 0){
                                                 return <label className = 'contentdetails-fg2'>{item.NAME} </label>
                                             }
@@ -116,7 +138,7 @@ const ContentDetailsCard = ({content, details}) => {
                                     })}
                                 </div>
                                 <div className = 'contentdetails-contentelement'>
-                                    <h4 className = 'contentdetails-contentelement-headerlbl'>Genres: </h4> 
+                                    <h4 className = 'contentdetails-contentelement-headerlbl'>Genres:  </h4> 
                                     {details.genres.map((item, index) => {
                                         if(details.genres.length - 1 === index){
                                             return <label>{item.NAME}  </label>    
@@ -127,7 +149,7 @@ const ContentDetailsCard = ({content, details}) => {
                                     })}   
                                 </div>
                                     <div className = 'contentdetails-contentelement'>
-                                    <h4 className = 'contentdetails-contentelement-headerlbl'>Tagline: </h4> 
+                                    <h4 className = 'contentdetails-contentelement-headerlbl'>Tagline:  </h4> 
                                     <label>{content.TAGLINE}</label>   
                                 </div>
                             </div>
@@ -135,11 +157,11 @@ const ContentDetailsCard = ({content, details}) => {
                             <div className = 'contentdetails-details contentdetails-block'>
                                 <h2>Details </h2>
                                 <div className = 'contentdetails-contentelement'>
-                                    <h4 className = 'contentdetails-contentelement-headerlbl'>Release Date: </h4>
+                                    <h4 className = 'contentdetails-contentelement-headerlbl'>Release Date:  </h4>
                                     <label>{content.RELEASEDATE}</label>
                                 </div>
                                 <div className = 'contentdetails-contentelement'>
-                                    <h4 className = 'contentdetails-contentelement-headerlbl'>Languages: </h4>
+                                    <h4 className = 'contentdetails-contentelement-headerlbl'>Languages:  </h4>
                                     {details.languages.map((item, index) => {
                                         if(details.languages.length - 1 === index){
                                             return <label>{item.NAME}  </label>    
@@ -150,7 +172,7 @@ const ContentDetailsCard = ({content, details}) => {
                                     })}
                                 </div>
                                 <div className = 'contentdetails-contentelement'>
-                                    <h4 className = 'contentdetails-contentelement-headerlbl'>Filming Locations: </h4>    
+                                    <h4 className = 'contentdetails-contentelement-headerlbl'>Filming Locations:  </h4>    
                                     {details.locations.map((item, index) => {
                                         if(details.locations.length - 1 === index){
                                             return <label>{item.NAME}  </label>    
@@ -161,22 +183,22 @@ const ContentDetailsCard = ({content, details}) => {
                                     })}
                                 </div>
                                 <div className = 'contentdetails-contentelement'>
-                                    <h4 className = 'contentdetails-contentelement-headerlbl'>Runtime: </h4>
+                                    <h4 className = 'contentdetails-contentelement-headerlbl'>Runtime:  </h4>
                                     <label>{content.RUNTIME}  minutes</label>
                                 </div>
                                 <div className = 'contentdetails-contentelement'>
-                                    <h4 className = 'contentdetails-contentelement-headerlbl'>Rating: </h4>
+                                    <h4 className = 'contentdetails-contentelement-headerlbl'>Rating:  </h4>
                                     <label>{content.VOTEAVG} / 10</label>
                                 </div>
                                 <div className = 'contentdetails-contentelement'>
-                                    <h4 className = 'contentdetails-contentelement-headerlbl'>Total Votes: </h4>
+                                    <h4 className = 'contentdetails-contentelement-headerlbl'>Total Votes:  </h4>
                                     <label>{content.VOTECOUNT}</label>
                                 </div>
                             </div>
                             <div className = 'contentdetails-companycredits contentdetails-block'>
                                 <h2>Company Credits</h2>
                                 <div className = 'contentdetails-contentelement'>
-                                    <h4 className = 'contentdetails-contentelement-headerlbl'>Production Companies: </h4>
+                                    <h4 className = 'contentdetails-contentelement-headerlbl'>Production Companies:  </h4>
                                     {details.production_co.map((item, index) => {
                                     if(details.production_co.length - 1 === index){
                                         return <label>{item.NAME}  </label>    
@@ -198,6 +220,69 @@ const ContentDetailsCard = ({content, details}) => {
                                         </div>
                                     )
                                 })}
+                            </div>
+
+                            {content.TYPE === 'movie'  
+                            ?(
+                                <div className = 'contentdetails-otherdetails-boxoffice contentdetails-block'>
+                                    <h2>Box Office</h2>
+                                    <div className = 'contentdetails-contentelement'>
+                                        <h4 className = 'contentdetails-contentelement-headerlbl'>Budget:  </h4>
+                                        <label>{content.movie.BUDGET} $</label>
+                                    </div>
+                                    <div className = 'contentdetails-contentelement'>
+                                        <h4 className = 'contentdetails-contentelement-headerlbl'>Revenue:  </h4>
+                                        <label>{content.movie.REVENUE} $</label>
+                                    </div>
+                                </div>
+                            )
+                            :
+                            (
+                                <div className = 'contentdetails-block'>
+                                    <h2>Seasons</h2>
+                                    <div className = 'contentdetails-otherdetails-seasons'>
+                                        
+                                        {currSeasonIndex === 0 
+                                        ?(
+                                            <svg className = 'seasons-arrow-btn' xmlns="http://www.w3.org/2000/svg" fill="gray" pointer-events ='none' class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                                            <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                                            </svg>)
+                                        :(
+                                            <svg className = 'seasons-arrow-btn' onClick = {previousSeason}  xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                                            <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                                            </svg>
+                                        )}  
+
+                                        <div id = {`seasoncard-${currSeasonIndex}`} className = {`contentdetails-seasondetails-container ${seasoncardAnimation}`} style = {seasonbackground}>
+                                            <div className = 'contentdetails-seasondetails-details'>
+                                                <h4>Season {details.seasons[currSeasonIndex].SEASON_NO}</h4>
+                                                <label>Airdate: {details.seasons[currSeasonIndex].AIRDATE}</label>
+                                                <label>{details.seasons[currSeasonIndex].EPISODES} Episodes</label>
+                                            </div>
+                                            <div className = 'animate__animated animate__fadeInUp' id = 'contentdetails-seasondetails-overview'>
+                                                <p>{details.seasons[currSeasonIndex].OVERVIEW}</p>
+                                            </div>
+                                        </div>
+                                        
+                                        {currSeasonIndex === details.seasons.length - 1 
+                                        ?(
+                                            <svg className = 'seasons-arrow-btn' xmlns="http://www.w3.org/2000/svg" fill="gray" pointer-events ='none' class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                                            </svg>
+                                        ) 
+                                        :
+                                        (
+                                          <svg className = 'seasons-arrow-btn' onClick = {nextSeason} xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                                            </svg>
+                                        )}  
+                                    </div>
+                                    
+                    
+                                </div>
+                            )}
+                            <div className = 'contentdetails-otherdetails-boxoffice contentdetails-block'>
+                                <label id = 'checkcontentreviewslink'>Check Reviews</label>
                             </div>
 
 

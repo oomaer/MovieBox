@@ -82,6 +82,12 @@
 .input-element-tvdetails textarea{
     margin-bottom: 0.5rem;
     height: 5rem;
-    width: 100%;
+    width: 70%;
     padding: 1rem;
+}
+
+@media only screen and (max-width: 430px){
+    .input-element-tvdetails textarea{
+        width: auto;
+    }
 }

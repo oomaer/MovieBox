@@ -90,7 +90,8 @@
   /* Content Card */
   --content-card-container-bg: black;
   --content-card-container-fg: black;
-  --content-card-topbar-bg: #e32b37;
+  /* --content-card-topbar-bg: #e32b37; */
+  --content-card-topbar-bg:#990033;
   --content-card-topbar-fg: white;
   --content-card-topbar-fg2: black;
   --content-card-body-bg: #0d1117;

@@ -1,0 +1,60 @@
+
+
+import {useParams} from 'react-router-dom';
+import {useEffect, useState} from 'react';
+import '../Filter/filtercontent.css';
+import NewsAwardEventCard from './NewsAwardEventCard';
+
+const NewsAwardsEvents = ({type}) => {
+    const {filter} = useParams();
+    const [data, setdata] = useState([]);
+    const [found, setFound] = useState(true);
+
+    useEffect(() => {
+        fetch('http://localhost:4000/getNewsAwardsEvents', {
+                method: 'post',
+                headers : {'Content-Type' : 'application/json'},
+                body: JSON.stringify({
+                    filter: filter,
+                    type: type
+                })
+            }).then(response => {
+                if(!response.ok){  
+                    setFound(false);  
+                }
+                else{
+                    response.json().then(result => {
+                        console.log(result);
+                        setdata(result);
+                    })
+                }
+            
+            })
+            .catch(err => {
+                this.setState({statusMsg: 'Error Connecting to Server'})
+            });
+
+    }, [filter, type]); 
+
+
+
+    return(
+        <div className = 'filter-results-container'>
+            <div className = 'filter-results-content'>
+                <h1>Showing Results</h1>
+                <label id = 'fetchedresultscount'>({data.length} results fetched)</label>
+                <ul>
+                    {data.map(content => {
+                        return (<li>
+                            <NewsAwardEventCard item = {content}/> 
+                        </li>
+                        )
+                    })}
+                </ul>
+            </div>
+            
+        </div>
+    )
+}
+
+export default NewsAwardsEvents;

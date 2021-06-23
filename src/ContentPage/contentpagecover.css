@@ -50,7 +50,7 @@
     margin: 3rem 0;
     padding: 0.7rem 2rem;
     font-weight: bold;
-    background: #e32b37;
+    background: var(--content-card-topbar-bg);
     border: none;
     color: white;
     cursor: pointer;
@@ -58,8 +58,8 @@
 }
 
 #watch-trailer-btn:hover{
-    border: 1px solid #e32b37;
-    color: #e32b37;
+    border: 1px solid var(--content-card-topbar-bg);
+    color: var(--content-card-topbar-bg);
     background: none;
 }
 

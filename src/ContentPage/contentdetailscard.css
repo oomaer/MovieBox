@@ -75,7 +75,7 @@
     display: flex;
 }
 
-.content-details-card-body-details img{
+#content-main-image{
     width: 14rem;
     height: 21rem;
     position: relative;
@@ -149,11 +149,78 @@
     white-space: pre;
     font-weight: lighter;
     margin: 0;
+
+}
+.contentdetails-otherdetails-seasons{
+    padding: 2rem;
+    background: #161b22;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.contentdetails-seasondetails-container{
+    display: flex;
+    align-items: flex-end;
+    width: 30rem;
+    height: 24rem;
+    margin: 1rem 2rem;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+
+.contentdetails-seasondetails-details{
+    display: flex;
+    flex-direction: column; 
+    padding: 1rem;
+    align-items: center;
+    background: rgb(0,0,0,0.6);
+    flex-grow: 1;
+}
+
+#contentdetails-seasondetails-overview{
+    padding: 1rem;
+    color: black;
+    opacity: 0.5;
+    display: none;
+    visibility: hidden;
+    background-color: white;
+    transition: visibility 1s, opacity 0.5s linear;
+}
+
+.contentdetails-seasondetails-container:hover > #contentdetails-seasondetails-overview{
+    display:block;
+    visibility: visible;
+    opacity: 1;
+}
+
+.contentdetails-seasondetails-container:hover > .contentdetails-seasondetails-details{
+    display: none;
+}
+
+.contentdetails-otherdetails-seasons svg {
+    height: 25px;
+    width: 25px;
+}
+.contentdetails-otherdetails-seasons svg:hover{
+    color:red;
+    cursor: pointer;
+    transform: scale(1.2);
 }
 
 @media only screen and (max-width: 1209px){
     .content-details-card-body-details{
         width: auto;
+    }
+    .content-details-card-body{
+        flex-direction: column;
     }
     .content-details-card-body-pictures{
         flex-direction: row;
@@ -165,7 +232,7 @@
     .content-details-card{
         width: auto;
     }
-    .content-details-card-body-details img{
+    #content-main-image{
         position: inherit;
         margin: 1rem;
         margin-bottom: 2rem;
@@ -188,5 +255,10 @@
         flex-wrap: wrap;
         justify-content: center;
         margin: 1.5rem;
+    }
+
+    .contentdetails-seasondetails-container{
+        width: 100%;
+        height: 100%;
     }
 }

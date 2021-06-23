@@ -19,7 +19,8 @@ class ContentPage extends Component {
                         plot_keywords : [],
                         languages: [],
                         locations: [],
-                        production_co: []},
+                        production_co: [],
+                        seasons: [{}]},
             found: true
             
         }
@@ -74,13 +75,16 @@ class ContentPage extends Component {
 
 
     render(){
-        const {content, details} = this.state
+        const {content, details, found} = this.state
         return(
             <div className = 'contentpage-container'>
+                {found === false ? (<h1>404 Not Found</h1>)
+                :(
                 <div className = 'contentpage-content'>
                     <ContentPageCover content = {content} details = {details}/>
                     <ContentDetailsCard content = {content} details = {details}/>
                 </div>
+                )}
             </div>
         )
     }

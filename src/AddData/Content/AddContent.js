@@ -103,7 +103,7 @@ class AddContent extends Component {
     }
 
     validData = () => {
-        const {title, releaseDate, runtime, image, cover} = this.state;
+        const {title, releaseDate, runtime, image, cover, type, movie} = this.state;
         if(title === ''){
             this.setState({statusMsg: 'Title cannot be left empty'});
         }
@@ -118,6 +118,12 @@ class AddContent extends Component {
         }
         else if(cover === ''){
             this.setState({statusMsg: 'Cover Photo link is required'});
+        }
+        else if(type === 'movie' && movie.budget === ''){
+            this.setState({statusMsg: 'Budget is required'});
+        }
+        else if(type === 'movie' && movie.revenue === ''){
+            this.setState({statusMsg: 'Revenue is required'});
         }
         else{
             this.setState({statusMsg: ''})
@@ -202,7 +208,7 @@ class AddContent extends Component {
                         <input type = 'number' value = {popularity} onChange = {this.onPopularityChange}></input>
                         
                         <label>Overview</label>
-                        <textarea maxLength = '1000' id = 'overview-textarea' onChange ={this.onOverViewChange}>{overview}</textarea>
+                        <textarea maxLength = '1000' id = 'overview-textarea' onChange ={this.onOverViewChange} value = {overview}></textarea>
 
                         <label>Image Link</label>
                         <input type = 'url' maxLength = '500' value = {image} onChange = {this.onImageChange}></input>
