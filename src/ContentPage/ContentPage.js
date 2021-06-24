@@ -20,7 +20,7 @@ class ContentPage extends Component {
                         languages: [],
                         locations: [],
                         production_co: [],
-                        seasons: [{}]},
+                        seasons: []},
             found: true
             
         }

@@ -294,7 +294,7 @@ class EditContent extends Component {
                                 <button className= 'add-content-btn' onClick = {this.confirmDelete}>Delete</button>
                             </div>
                             <label id = 'add-content-status-msg'>{statusMsg}</label>
-                            <Link to = {`/add/${content_id}/details`}><label id = 'addmoredetailsbtn'>edit details</label></Link>
+                            <Link to = {`/admin/${content_id}/details`}><label id = 'addmoredetailsbtn'>edit details</label></Link>
                     </div>
                     
                 </div>

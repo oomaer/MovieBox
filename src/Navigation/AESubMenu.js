@@ -1,7 +1,8 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './submenu.css';
 
-const AESubMenu = ({radioBtns, setRadioBtns}) => {
+const AESubMenu = ({radioBtns, setRadioBtns, closeMenu}) => {
 
     const uncheckRadio = () => {
         if(document.getElementById('AwardsEvents').checked === true && radioBtns.awardevents === false){
@@ -26,9 +27,9 @@ const AESubMenu = ({radioBtns, setRadioBtns}) => {
            </div> 
            </label>
             <ul className = 'submenu-items-list animate__animated animate__fadeInDown animate__faster'>
-                <li className = 'submenu-list-item'>Browse Latest Awards</li>
-                <li className = 'submenu-list-item'>Browse Best Awards</li>
-                <li className = 'submenu-list-item'>TV News</li> 
+                <li onClick = {closeMenu} className = 'submenu-list-item'><Link to = {`/news/popular`}>Browse Popular News</Link></li>
+                <li onClick = {closeMenu} className = 'submenu-list-item'><Link to = {`/awardsevents/latest`}>Browse Latest Awards</Link></li>
+                <li onClick = {closeMenu} className = 'submenu-list-item'><Link to = {`/news/latest`}>Browse Latest News</Link></li> 
             </ul>
 
         </div>

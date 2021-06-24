@@ -8,10 +8,12 @@ import AddAwardEvent from "./AwardsNews/AddAwardEvent";
 import AddNews from "./AwardsNews/AddNews"; 
 import EditNews from './AwardsNews/EditNews';
 import EditAwardEvent from './AwardsNews/EditAwardEvent';
-const AddMain = () => {
+const AddMain = ({admin}) => {
     let {path, url} = useRouteMatch();
     return(
       <div className = 'add-main'>
+        {admin === false ? (<h1>404 Not Found</h1>)
+        :(
         <Switch>
             <Route path = {`${path}/addcontent`}> 
                 <AddContent url = {url}/>  
@@ -28,7 +30,7 @@ const AddMain = () => {
             <Route path = {`${path}/editcelebrity/:personid`}> 
                 <EditCelebrity />
             </Route>
-            <Route path = {`${path}/awardsevents`}> 
+            <Route path = {`${path}/addawardevent`}> 
                 <AddAwardEvent />
             </Route>
             <Route path = {`${path}/editawardevent/:id`}> 
@@ -41,6 +43,7 @@ const AddMain = () => {
                 <EditNews />
             </Route>
         </Switch>
+        )}
        </div>
     )
 }

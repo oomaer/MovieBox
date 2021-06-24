@@ -20,10 +20,15 @@
 
 .cover-content .content-details{
     background: var(--home-cover-text-bg);
-    padding: 0rem 1rem 2rem 3rem;
+    padding: 1rem 1rem 2rem 3rem;
     border-radius: 0px 75px 0px 0px;
     width: 35rem;
     margin-bottom: 3rem;
+}
+.cover-content .content-details:hover{
+    box-shadow: 0 0 10px #ff0000;
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.05);
 }
 
 .content-details .small-details{
@@ -41,6 +46,7 @@
     margin: 0;
 }
 
+
 .covers-list{
     display: flex;
     align-items: flex-end;
@@ -54,9 +60,12 @@
     height: 100%;
     object-fit: cover;
 }
-
+.cover-card img:hover{
+    cursor:pointer;
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.2);
+}
 .cover-card{
-    
     width: 8rem;
     height: 12rem;
     margin: 0.3rem;

@@ -5,7 +5,7 @@ import {useEffect, useState} from 'react';
 import '../Filter/filtercontent.css';
 import NewsAwardEventCard from './NewsAwardEventCard';
 
-const NewsAwardsEvents = ({type}) => {
+const NewsAwardsEvents = ({type, admin}) => {
     const {filter} = useParams();
     const [data, setdata] = useState([]);
     const [found, setFound] = useState(true);
@@ -46,7 +46,7 @@ const NewsAwardsEvents = ({type}) => {
                 <ul>
                     {data.map(content => {
                         return (<li>
-                            <NewsAwardEventCard item = {content}/> 
+                            <NewsAwardEventCard item = {content} filter = {filter} admin = {admin}/> 
                         </li>
                         )
                     })}

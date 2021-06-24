@@ -4,6 +4,7 @@
 
 .filterresultcard-content{
     display:flex;
+    font-family: var(--home-cover-fontfamily);
     border-bottom: 1px solid rgb(85, 85, 85);
 
 }

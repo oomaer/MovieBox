@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './homepage.css';
 import Cover from './Cover';
-import TVShowCards from './TVShowCards';
+import CardsSection1 from './CardsSection1';
 class Homepage extends Component {
 
     render(){
@@ -9,7 +9,7 @@ class Homepage extends Component {
             <div className = 'homepage-container'>
                 <div className = 'homepage-content'>
                     <Cover />
-                    <TVShowCards />
+                    <CardsSection1 />
                     
                 </div>
             </div>

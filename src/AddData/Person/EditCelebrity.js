@@ -148,7 +148,7 @@ class EditCelebrity extends Component {
     AddPicture = (element, type) => {
         if(!(this.validPictureLink(this.state.added_pictures, element))){
             let temparr = this.state.added_pictures;
-            temparr.push({NAME: element});
+            temparr.push({LINK: element});
             this.setState({added_pictures: temparr});
             fetch('http://localhost:4000/addCelebrityPicture', {
                 method: 'post',
@@ -184,7 +184,7 @@ class EditCelebrity extends Component {
             method: 'post',
             headers : {'Content-Type' : 'application/json'},
             body: JSON.stringify({
-                value: element.NAME,
+                value: element.LINK,
                 celeb_id: this.state.id,
             }
             )

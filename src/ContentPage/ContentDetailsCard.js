@@ -23,7 +23,7 @@ const ContentDetailsCard = ({content, details}) => {
     }
 
     let seasonbackground;
-    if(content.TYPE === 'tvshow'){
+    if(content.TYPE === 'tvshow' && details.seasons.length !== 0){
        seasonbackground = {'background-image': `url(${details.seasons[currSeasonIndex].IMAGE})`};
     }
     return(
@@ -236,7 +236,7 @@ const ContentDetailsCard = ({content, details}) => {
                                     </div>
                                 </div>
                             )
-                            :
+                            : details.seasons.length !== 0 ?
                             (
                                 <div className = 'contentdetails-block'>
                                     <h2>Seasons</h2>
@@ -280,7 +280,8 @@ const ContentDetailsCard = ({content, details}) => {
                                     
                     
                                 </div>
-                            )}
+                                
+                            ):(null)}
                             <div className = 'contentdetails-otherdetails-boxoffice contentdetails-block'>
                                 <label id = 'checkcontentreviewslink'>Check Reviews</label>
                             </div>

@@ -1,8 +1,9 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './submenu.css';
 import 'animate.css/animate.css';
 
-const MovieSubMenu = ({radioBtns, setRadioBtns}) => {
+const MovieSubMenu = ({radioBtns, setRadioBtns, closeMenu}) => {
     
     const uncheckRadio = () => {
         if(document.getElementById('Movies').checked === true && radioBtns.movies === false){
@@ -29,13 +30,11 @@ const MovieSubMenu = ({radioBtns, setRadioBtns}) => {
             </div>
             </label>
             <ul className = 'submenu-items-list animate__animated animate__fadeInDown animate__faster'>
-                <li className = 'submenu-list-item'>Browse Latest Movies</li>
-                <li className = 'submenu-list-item'>Most Popular Movies</li>
-                <li className = 'submenu-list-item'>Browse Latest Movies</li>
-                <li className = 'submenu-list-item'>Browse Movies by Genre</li>
-                <li className = 'submenu-list-item'>Top Box Office</li>
-                <li className = 'submenu-list-item'>Movie News</li>
-            
+                <li onClick = {closeMenu} className = 'submenu-list-item'><Link to = {`/filtermovies/releasedate`}>Browse Latest Movies</Link></li>
+                <li onClick = {closeMenu} className = 'submenu-list-item'><Link to = {`/filtermovies/popularity`}>Most Popular Movies</Link></li>
+                <li onClick = {closeMenu} className = 'submenu-list-item'><Link to = {`/filtermovies/rating`}>Browse Highest Rated Movies</Link></li>
+                <li onClick = {closeMenu} className = 'submenu-list-item'><Link to = {`/filtermovies/boxoffice`}>Top Box Office</Link></li>
+                <li onClick = {closeMenu} className = 'submenu-list-item'><Link to = {`/news/movie`}>Movie News</Link></li>            
             </ul>
         </div>
     )

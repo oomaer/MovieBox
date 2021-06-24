@@ -3,19 +3,18 @@ import {useEffect, useState} from 'react';
 import './filtercontent.css';
 import FilterResultCard from './FilterResultCard';
 
-const FilterContent = ({type}) => {
+const FilterCelebrity = ({type}) => {
     const {filter} = useParams();
-    const [filteredContent, setFilteredContent] = useState([]);
+    const [data, setData] = useState([]);
     const [found, setFound] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:4000/filterContent', {
+        fetch('http://localhost:4000/filterCelebrity', {
                 method: 'post',
                 headers : {'Content-Type' : 'application/json'},
                 body: JSON.stringify({
                     filter: filter,
-                    type: type,
-                    rows: 25
+                    type: type
                 })
             }).then(response => {
                 if(!response.ok){  
@@ -24,7 +23,7 @@ const FilterContent = ({type}) => {
                 else{
                     response.json().then(result => {
                         console.log(result);
-                        setFilteredContent(result);
+                        setData(result);
                     })
                 }
             
@@ -43,11 +42,11 @@ const FilterContent = ({type}) => {
             :(
             <div className = 'filter-results-content'>
                 <h1>Showing Results</h1>
-                <label id = 'fetchedresultscount'>({filteredContent.length} results fetched)</label>
+                <label id = 'fetchedresultscount'>({data.length} results fetched)</label>
                 <ul>
-                    {filteredContent.map(content => {
+                    {data.map(item => {
                         return (<li>
-                            <FilterResultCard item = {content} type = {type}/> 
+                            <FilterResultCard item = {item} type = {type}/> 
                         </li>
                         )
                     })}
@@ -58,4 +57,4 @@ const FilterContent = ({type}) => {
     )
 }
 
-export default FilterContent;
+export default FilterCelebrity;

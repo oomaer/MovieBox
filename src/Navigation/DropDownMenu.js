@@ -45,10 +45,10 @@ const DropDownMenu = ({closeMenu}) => {
             </div>
 
            <div className = 'sub-menus'>
-            <MovieSubMenu radioBtns = {radioBtns} setRadioBtns = {setRadioBtns} />
-            <TVShowSubMenu radioBtns = {radioBtns} setRadioBtns = {setRadioBtns}/>
-            <AESubMenu radioBtns = {radioBtns} setRadioBtns = {setRadioBtns}/>
-            <CelebritiesSubMenu radioBtns = {radioBtns} setRadioBtns = {setRadioBtns}/>
+            <MovieSubMenu radioBtns = {radioBtns} setRadioBtns = {setRadioBtns} closeMenu = {closeMenu}/>
+            <TVShowSubMenu radioBtns = {radioBtns} setRadioBtns = {setRadioBtns} closeMenu = {closeMenu}/>
+            <AESubMenu radioBtns = {radioBtns} setRadioBtns = {setRadioBtns} closeMenu = {closeMenu}/>
+            <CelebritiesSubMenu radioBtns = {radioBtns} setRadioBtns = {setRadioBtns} closeMenu = {closeMenu}/>
             </div>
 
         </div>

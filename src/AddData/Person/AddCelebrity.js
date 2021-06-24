@@ -121,7 +121,7 @@ class AddCelebrity extends Component {
     AddPicture = (element, type) => {
         if(!(this.validPictureLink(this.state.added_pictures, element))){
             let temparr = this.state.added_pictures;
-            temparr.push({NAME: element});
+            temparr.push({LINK: element});
             this.setState({added_pictures: temparr});
             fetch('http://localhost:4000/addCelebrityPicture', {
                 method: 'post',
@@ -149,6 +149,7 @@ class AddCelebrity extends Component {
     }
     
     removePicture = (element, index, type) => {
+        console.log(element);
         let temparr = this.state.added_pictures;
         temparr.splice(index, 1);
         this.setState({added_pictures: temparr});
@@ -156,7 +157,7 @@ class AddCelebrity extends Component {
             method: 'post',
             headers : {'Content-Type' : 'application/json'},
             body: JSON.stringify({
-                value: element.NAME,
+                value: element.LINK,
                 celeb_id: this.state.added_id,
             }
             )

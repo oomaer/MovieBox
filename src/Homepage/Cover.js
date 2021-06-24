@@ -54,16 +54,18 @@ const Cover = () => {
         className = {`cover-container animate__animated animate__faster ${animation_class}`} style = {backgroundimage}>
             
             <div className = 'cover-content' >
+                <Link className = 'link' to = {`/content/${data[currentIndex][0]}`}>
                 <div className = 'content-details'> 
                     <div className = 'small-details'>
-                        <label>{data[currentIndex][2]} </label>
+                        {data[currentIndex][2] ? (
+                        <label>{data[currentIndex][2].split('-')[0]} </label>):(null)}
                         <label id = 'cover-genres'> | {data[currentIndex][5]}</label>
                         <label> | {data[currentIndex][3] + ' minutes'}</label>
                     </div>
-                    <Link className = 'link' to = {`/content/${data[currentIndex][0]}`}>
+                    
                         <h1>{data[currentIndex][1]}</h1>
-                    </Link>
                 </div>
+                </Link>
             </div>
 
         </div>

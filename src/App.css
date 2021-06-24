@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
 :root{
 
   /*sign up/ sign in */
@@ -77,7 +77,7 @@
   --home-cover-text-shadow:   0.05em 0 black,0 0.05em black, -0.05em 0 black, 0 -0.05em black,
   -0.05em -0.05em black,  -0.05em 0.05em black, 0.05em -0.05em black,  0.05em 0.05em black;
   --home-cover-heading-fontfamily: 'Noto Sans', sans-serif;
-  --home-cover-fontfamily: 'Roboto', serif;
+  --home-cover-fontfamily: 'Dosis', sans-serif;
 
   /*footer */
   --footer-bg: rgb(46, 10, 10);

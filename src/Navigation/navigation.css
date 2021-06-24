@@ -38,12 +38,9 @@
 }
 
 .logo:hover{
-    background-color: var(--logo-lbl-transition);
-    cursor: pointer;
-    -webkit-transition: background-color 1s linear;
-    -moz-transition: background-color 1s linear;
-    -o-transition: background-color 1s linear;
-    transition: background-color 1s linear;
+    text-shadow:1px 1px 10px rgb(204, 6, 6), 1px 1px 10px rgb(209, 38, 38);
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.2);
 }
 
 

@@ -1,7 +1,8 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './submenu.css';
 
-const TVShowSubMenu = ({radioBtns, setRadioBtns}) => {
+const TVShowSubMenu = ({radioBtns, setRadioBtns, closeMenu}) => {
    
     const uncheckRadio = () => {
         if(document.getElementById('TVShows').checked === true && radioBtns.tvshows === false){
@@ -25,11 +26,10 @@ const TVShowSubMenu = ({radioBtns, setRadioBtns}) => {
             </div>
             </label>
             <ul className = 'submenu-items-list animate__animated animate__fadeInDown animate__faster'>
-                <li className = 'submenu-list-item'>Browse Latest TV Shows</li>
-                <li className = 'submenu-list-item'>Most Popular TV Shows</li>
-                <li className = 'submenu-list-item'>Browse Latest TV Shows</li>
-                <li className = 'submenu-list-item'>Browse TV Show by Genre</li>
-                <li className = 'submenu-list-item'>TV News</li> 
+                <li onClick = {closeMenu} className = 'submenu-list-item'><Link to = {`/filtertvshows/releasedate`}>Browse Latest TV Shows</Link></li>
+                <li onClick = {closeMenu} className = 'submenu-list-item'><Link to = {`/filtertvshows/popularity`}>Most Popular TV Shows</Link></li>
+                <li onClick = {closeMenu} className = 'submenu-list-item'><Link to = {`/filtertvshows/rating`}>Browse Highest Rated</Link></li>
+                <li onClick = {closeMenu} className = 'submenu-list-item'><Link to = {`/news/tvshow`}>TV News</Link></li> 
             </ul>
 
         </div>

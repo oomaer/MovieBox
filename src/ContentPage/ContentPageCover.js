@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 import './contentpagecover.css';
 
 const ContentPageCover = ({content, details}) => {
@@ -24,7 +25,10 @@ const ContentPageCover = ({content, details}) => {
                         }
                         
                     </div>
-                    <button id = 'watch-trailer-btn' className = ''>WATCH TRAILER</button>
+                    <div className = 'content-details-cover-btns'>
+                        <button id = 'watch-trailer-btn' className = ''>WATCH TRAILER</button>
+                        <Link to = {`/admin/editcontent/${content.ID}`}><button id = 'watch-trailer-btn' className = ''>Edit</button></Link>
+                    </div>
                 </div>
             </div>
         </div>
