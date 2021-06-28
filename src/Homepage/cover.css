@@ -1,3 +1,4 @@
+
 .cover-container{
     display: flex;
     flex-grow: 1;
@@ -8,6 +9,8 @@
     background-repeat: no-repeat;
     background-color:  var(--home-cover-bg-tint);
     background-blend-mode: multiply;
+    box-shadow: rgb(0 0 0 / 50%) 120px -50px 90px -1px inset, rgb(0 0 0 / 99%) 0px 18px 16px -18px inset
+    
     /* background-attachment: fixed; */
 }
 
@@ -24,10 +27,11 @@
     border-radius: 0px 75px 0px 0px;
     width: 35rem;
     margin-bottom: 3rem;
+    transition: ease-in-out 0.2s all;
+    box-shadow: 0 10px 20px -6px black;
 }
 .cover-content .content-details:hover{
     box-shadow: 0 0 10px #ff0000;
-    transition: all 0.2s ease-in-out;
     transform: scale(1.05);
 }
 
@@ -59,10 +63,11 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    box-shadow: 0 10px 20px -6px black;
 }
 .cover-card img:hover{
     cursor:pointer;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.3s ease-in-out;
     transform: scale(1.2);
 }
 .cover-card{

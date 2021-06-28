@@ -3,10 +3,7 @@ import './contentdetailscard.css';
 
 const ContentDetailsCard = ({content, details}) => {
     const [currSeasonIndex, setCurrSeasonIndex] = useState(0);
-    const [seasoncardAnimation, setSeasonCardAnimation] = useState('')
-
-    console.log(details);
-    console.log(content);
+    const [seasoncardAnimation, setSeasonCardAnimation] = useState('');
 
     const previousSeason = () => {
         if(currSeasonIndex > 0){
@@ -23,11 +20,12 @@ const ContentDetailsCard = ({content, details}) => {
     }
 
     let seasonbackground;
-    if(content.TYPE === 'tvshow' && details.seasons.length !== 0){
+    if(details.seasons != undefined && details.seasons.length !== 0 ){
        seasonbackground = {'background-image': `url(${details.seasons[currSeasonIndex].IMAGE})`};
     }
     return(
         <div className = 'content-details-card-container'>
+            {details.creators !== undefined ? (
             <div className = 'content-details-card'>
                 <div className = 'content-details-card-topbar'>
                     <div className = 'content-details-card-topbar-left'>
@@ -301,6 +299,7 @@ const ContentDetailsCard = ({content, details}) => {
                     </div>
                 </div>
             </div>
+            ):(null)}
         </div>
     )
 }

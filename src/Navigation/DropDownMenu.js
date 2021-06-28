@@ -1,4 +1,5 @@
 import React, {useRef, useEffect, useState} from 'react';
+import {Link} from 'react-router-dom';
 import './dropdownmenu.css';
 import MovieSubMenu from './MovieSubMenu';
 import CloseButton from './CloseButton';
@@ -40,7 +41,7 @@ const DropDownMenu = ({closeMenu}) => {
     return(
         <div className = 'drop-down-menu' ref = {wrapperRef}>
             <div className = 'logo-closebtn'>
-                <h1 className = 'dropdown-logo logo'>Movie Box</h1> 
+                <Link to = '/home'><h1 className = 'dropdown-logo logo'>Movie Box</h1></Link> 
                 <CloseButton closeMenu = {closeMenu} /> 
             </div>
 

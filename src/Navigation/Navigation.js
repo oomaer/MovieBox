@@ -5,6 +5,7 @@ import DropDownMenu from './DropDownMenu';
 import SignInButton from './SignInButton';
 import {Link} from 'react-router-dom';
 import ProfileDetailsMenu from './ProfileDetailsMenu';
+import NavSearchBar from './NavSearchBar';
 const Navigation = ({user}) => {
 
     const closeMenu = () => {
@@ -22,6 +23,9 @@ const Navigation = ({user}) => {
                 <MenuButton className = 'menu-btn' />
                 </label>
                 <DropDownMenu className = 'drop-down-menu' closeMenu = {closeMenu} />
+            </div>
+            <div className = 'nav-justify-center'>
+                <NavSearchBar />
             </div>
             <div className = 'nav-justify-right'>
                 <div className = 'user-account-btns'>

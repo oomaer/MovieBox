@@ -39,7 +39,7 @@ const NewsAwardsEvents = ({type, admin}) => {
 
 
     return(
-        <div className = 'filter-results-container'>
+        <div className = 'filter-results-container' id = {`filter-results-container-${type}`}>
             <div className = 'filter-results-content'>
                 <h1>Showing Results</h1>
                 <label id = 'fetchedresultscount'>({data.length} results fetched)</label>

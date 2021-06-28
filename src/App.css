@@ -4,8 +4,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
 :root{
 
+  --opensans: 'Open Sans', sans-serif;
+  --ubuntu: 'Ubuntu', sans-serif;
   /*sign up/ sign in */
   --background-color: black;
   --registration-card-color: #f6f5f7;;

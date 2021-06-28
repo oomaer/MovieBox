@@ -3,7 +3,7 @@ import './newawardseventcard.css';
 const NewsAwardEventCard = ({item, filter, admin}) => {
 
     return(
-        <div className = 'newawardevent-container'>
+        <div className = 'newawardevent-container' id = {item + filter}>
             <div className = 'newawardevent-content'>
                 <div className = 'newsawardevent-header'>
                     <h1>{item.NAME}</h1>

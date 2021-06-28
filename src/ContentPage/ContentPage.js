@@ -27,50 +27,59 @@ class ContentPage extends Component {
     }
 
     componentDidMount(){
+        this.getData(this.state.id);
+    }
+
+    getData = (id) => {
         fetch('http://localhost:4000/getContentData', {
-                method: 'post',
-                headers : {'Content-Type' : 'application/json'},
-                body: JSON.stringify({
-                    id : this.state.id
-                })
-            }).then(response => {
-                if(!response.ok){  
-                    this.setState({found: false});  
-                }
-                else{
-                    response.json().then(result => {
-                        this.setState({content: result})
-                    })
-                }
-            
+            method: 'post',
+            headers : {'Content-Type' : 'application/json'},
+            body: JSON.stringify({
+                id : id
             })
-            .catch(err => {
-                this.setState({statusMsg: 'Error Connecting to Server'})
-            });
-
-            
-            fetch('http://localhost:4000/getContentDetails', {
-                method: 'post',
-                headers : {'Content-Type' : 'application/json'},
-                body: JSON.stringify({
-                    content_id : this.state.id
+        }).then(response => {
+            if(!response.ok){  
+                this.setState({found: false});  
+            }
+            else{
+                response.json().then(result => {
+                    this.setState({content: result})
                 })
-            }).then(response => {
-                if(!response.ok){  
-                    this.setState({found: false});  
-                }
-                else{
-                    response.json().then(result => {
-                        console.log(result);
-                        this.setState({details: result})
-                    })
-                }
-            
-            })
-            .catch(err => {
-                this.setState({statusMsg: 'Error Connecting to Server'})
-            });
+            }
+        
+        })
+        .catch(err => {
+            this.setState({statusMsg: 'Error Connecting to Server'})
+        });
 
+        
+        fetch('http://localhost:4000/getContentDetails', {
+            method: 'post',
+            headers : {'Content-Type' : 'application/json'},
+            body: JSON.stringify({
+                content_id : id
+            })
+        }).then(response => {
+            if(!response.ok){  
+                this.setState({found: false});  
+            }
+            else{
+                response.json().then(result => {
+                    console.log(result);
+                    this.setState({details: result})
+                })
+            }
+        
+        })
+        .catch(err => {
+            this.setState({statusMsg: 'Error Connecting to Server'})
+        });
+    }
+
+    componentDidUpdate (prevProps) {
+        if(prevProps.match.params.id !== this.props.match.params.id){
+            this.getData(this.props.match.params.id);
+        }
     }
 
 
@@ -80,7 +89,7 @@ class ContentPage extends Component {
             <div className = 'contentpage-container'>
                 {found === false ? (<h1>404 Not Found</h1>)
                 :(
-                <div className = 'contentpage-content'>
+                <div className = 'contentpage-content' id = {`content-page-content-${this.state.id}`}>
                     <ContentPageCover content = {content} details = {details}/>
                     <ContentDetailsCard content = {content} details = {details}/>
                 </div>
