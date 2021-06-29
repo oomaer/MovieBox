@@ -15,6 +15,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+   
 }
 
 .nav-justify-left, .nav-justify-right, .nav-justify-center {
@@ -61,7 +62,7 @@
 @media only screen and (max-width: 1026px){
     
     .nav-content{
-        width: auto;
+        width: 100vw;
     }
     .nav-justify-left{
         flex-direction: row-reverse;
@@ -82,4 +83,17 @@
     #nav-logo{
         display: none;
     }
+    .nav-signinbtn label{
+        display:none;
+        
+    }
+    .nav-justify-right{
+        margin-left:0;
+    }
+    .nav-justify-center{
+        flex-grow: 1;
+        display:flex;
+        justify-content: flex-end;
+    }
+    
 }

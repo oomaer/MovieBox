@@ -65,7 +65,6 @@ class ContentPage extends Component {
             }
             else{
                 response.json().then(result => {
-                    console.log(result);
                     this.setState({details: result})
                 })
             }

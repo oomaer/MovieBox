@@ -8,7 +8,7 @@ import FilterContent from './Filter/FilterContent';
 import FilterCelebrity from './Filter/FilterCelebrity';
 import NewsAwardsEvents from './NewsAwardsEvents/NewsAwardsEvents';
 import CelebrityDetails from './Celebrity/CelebrityDetails';
-
+import ContentReviews from './ContentPage/ContentReviews';
 const Content = ({user, setUser}) => {
   let match = useRouteMatch();
     return(
@@ -19,6 +19,9 @@ const Content = ({user, setUser}) => {
           </Route>
           <Route exact path = {`${match.path}content/:id`}> 
             <ContentPage admin = {true}/>  
+          </Route>
+          <Route exact path = {`${match.path}content/:id/reviews`}> 
+            <ContentReviews user = {user}/>  
           </Route>
           <Route exact path = {`${match.path}profile-settings`}>
             <ProfileSettings user = {user} setUser = {setUser} />

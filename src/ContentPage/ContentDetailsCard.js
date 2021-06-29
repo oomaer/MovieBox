@@ -25,7 +25,6 @@ const ContentDetailsCard = ({content, details}) => {
     }
     return(
         <div className = 'content-details-card-container'>
-            {details.creators !== undefined ? (
             <div className = 'content-details-card'>
                 <div className = 'content-details-card-topbar'>
                     <div className = 'content-details-card-topbar-left'>
@@ -78,7 +77,7 @@ const ContentDetailsCard = ({content, details}) => {
                                             }
                                         })}
                                     </div>
-                                ):
+                                ): (details.creators !== undefined ?
                                 (
                                     <div className = 'card-details-overview-stars-crew-crew'>
                                         <label>Creators:  </label> 
@@ -91,7 +90,7 @@ const ContentDetailsCard = ({content, details}) => {
                                             }
                                         })}
                                     </div>
-                                )}
+                                ):(null))}
 
                                 <div className = 'card-details-overview-stars-crew-stars'>
                                     <label>Stars: </label> 
@@ -234,7 +233,7 @@ const ContentDetailsCard = ({content, details}) => {
                                     </div>
                                 </div>
                             )
-                            : details.seasons.length !== 0 ?
+                            : details.seasons !== undefined && details.seasons.length !== 0 ?
                             (
                                 <div className = 'contentdetails-block'>
                                     <h2>Seasons</h2>
@@ -299,7 +298,6 @@ const ContentDetailsCard = ({content, details}) => {
                     </div>
                 </div>
             </div>
-            ):(null)}
         </div>
     )
 }

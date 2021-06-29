@@ -1,0 +1,29 @@
+.content-reviews-container{
+    display:flex;
+    justify-content: center;
+    background: #0d1117;
+}
+.content-reviews-content{
+    display: flex;
+    flex-direction: column;
+    background:#131722;
+    
+}
+
+.content-reviews-content h1{
+    margin-bottom: 0;
+    margin-left: 2rem;
+
+}
+
+#fetchedreviewscount{
+    margin-bottom: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid gray;
+    padding-left: 2rem;
+}
+
+.content-reviews-content ul{
+    list-style: none;
+    padding: 0;
+}
