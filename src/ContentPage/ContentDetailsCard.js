@@ -282,9 +282,8 @@ const ContentDetailsCard = ({content, details}) => {
                                 
                             ):(null)}
                             <div className = 'contentdetails-otherdetails-boxoffice contentdetails-block'>
-                                <label id = 'checkcontentreviewslink'>Check Reviews</label>
+                                <Link to = {`/content/${content.ID}/reviews`} ><label id = 'checkcontentreviewslink'>Check Reviews</label></Link>
                             </div>
-
 
                         </div>
 

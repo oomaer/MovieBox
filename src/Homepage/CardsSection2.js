@@ -16,7 +16,7 @@ const CardsSection2 = () => {
                 headers : {'Content-Type' : 'application/json'},
                 body: JSON.stringify({
                     type: 'movie',
-                    filter: 'popularity',
+                    filter: 'releasedate',
                     rows: 6
                 })
             }).then(response => {
@@ -25,7 +25,6 @@ const CardsSection2 = () => {
                 }
                 else{
                     response.json().then(result => {
-                        console.log(result)
                         setData(result)
                     })
                 }
@@ -41,7 +40,7 @@ const CardsSection2 = () => {
         <div className = 'cardsection2-container'>
             <div className = 'cardsection1-content'>
                 <div className = 'cardsection1-header'>
-                    <h2>Popular Movies</h2>
+                    <h2>Latest Movies</h2>
                     <label></label>
                 </div>
                 <div data-aos = 'flip-up' data-aos-duration = '800' className = 'cardsection2-cards-container'>
@@ -55,7 +54,7 @@ const CardsSection2 = () => {
                                 style = {{'background-image' : `LINEAR-GRADIENT(TO RIGHT top, RGB(0, 0, 0, 0.8) 5%, transparent 90%),
                                                                 url(${content.IMAGE})`}}>
                                         <div className = 'cardsection1-smallcard-content'>
-                                            <label className = 'cardsection1-card-date'>{data[0].RELEASEDATE.split('-')[0]}</label>
+                                            <label className = 'cardsection1-card-date'>{content.RELEASEDATE.split('-')[0]}</label>
                                             <label>{content.TITLE}</label>
                                         </div>
                                     </div>

@@ -40,6 +40,7 @@ const NewsAwardsEvents = ({type, admin}) => {
 
     return(
         <div className = 'filter-results-container' id = {`filter-results-container-${type}`}>
+            {found === false ? (<h1>404 not found</h1>):(
             <div className = 'filter-results-content'>
                 <h1>Showing Results</h1>
                 <label id = 'fetchedresultscount'>({data.length} results fetched)</label>
@@ -52,7 +53,7 @@ const NewsAwardsEvents = ({type, admin}) => {
                     })}
                 </ul>
             </div>
-            
+            )}
         </div>
     )
 }

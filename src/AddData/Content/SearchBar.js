@@ -72,7 +72,7 @@ const SearchBar = ({type, addItem}) => {
     return(
             <div className="search-container" id = {`search-container-${type}`}>
                 <div ref = {wrapperRef} className="search-input">
-                    <input type="text" value = {searchInput} onChange = {onSearchChange} placeholder="Type to search.."></input>
+                    <input type="text" style = {{'margin' : 0}} value = {searchInput} onChange = {onSearchChange} placeholder="Type to search.."></input>
                     <div className="search-results-box" id = {`search-results-${type}`}>
                         {SearchArr.map((item, index) => {
                             return (<li key = {index} onClick = {() => onListItemClick(item)}>{`${item.TITLE} (${item.RELEASEDATE})`}</li>)

@@ -122,7 +122,7 @@ class AddAwardEvent extends Component {
                         )}
 
                         <button className= 'add-content-btn' onClick = {this.addAwardEvent}>ADD</button>
-                        <label id = 'add-content-status-msg'>{statusMsg}</label>
+                        <label style = {{'pointerEvents' : 'none'}} id = 'add-content-status-msg'>{statusMsg}</label>
 
                     </div>
                     

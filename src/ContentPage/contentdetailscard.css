@@ -11,7 +11,7 @@
     top: -15vh;
     font-family: var(--drop-down-fontfamily);
     margin-bottom: -15vh;
-    box-shadow: rgba(126, 25, 25, 0.56) 0px 22px 70px 4px;
+    box-shadow: rgba(3, 9, 10, 0.56) 0px 22px 70px 4px;
 }
 
 .content-details-card-topbar{

@@ -28,8 +28,8 @@ const ContentPageCover = ({content, details, admin}) => {
                         
                     </div>
                     <div className = 'content-details-cover-btns'>
-                        {content.TRAILER != '' ? (
-                            <a target="_blank" href = {content.TRAILER}><button id = 'watch-trailer-btn' className = ''>WATCH TRAILER</button></a>)
+                        {content.TRAILER !== '' ? (
+                            <a rel="noreferrer" target="_blank" href = {content.TRAILER}><button id = 'watch-trailer-btn' className = ''>WATCH TRAILER</button></a>)
                         :(null)}
                         {admin ? (
                             <Link to = {`/admin/editcontent/${content.ID}`}><button id = 'watch-trailer-btn' className = ''>Edit</button></Link>

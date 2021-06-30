@@ -25,7 +25,6 @@ const CardsSection1 = ({filter, classType}) => {
                 }
                 else{
                     response.json().then(result => {
-                        console.log(result)
                         setData(result)
                     })
                 }
@@ -35,8 +34,6 @@ const CardsSection1 = ({filter, classType}) => {
                 this.setState({statusMsg: 'Error Connecting to Server'})
             });
             Aos.init();
-            console.log(classType);
-            console.log(classType === 'type11');
             if(classType === 'type1'){
                 setScrollAnimation(['zoom-in-right', 'zoom-in-left'])
             }
@@ -49,7 +46,8 @@ const CardsSection1 = ({filter, classType}) => {
         <div className = 'cardsection1-container'>
             <div className = 'cardsection1-content '>
                 <div className = 'cardsection1-header'>
-                    <h2>Trending Movies</h2>
+                    {filter === 'movies' ? (<h2>Popular Movies</h2>)
+                    :(<h2>Popular TV Series</h2>)}
                     <label></label>
                 </div>
                 <div className = {`cardsection1-cards cardsection1-cards-${classType}`}>
@@ -73,7 +71,7 @@ const CardsSection1 = ({filter, classType}) => {
                                     style = {{'background-image' : `LINEAR-GRADIENT(TO RIGHT top, RGB(0, 0, 0, 0.8) 5%, transparent 90%),
                                                                     url(${content.COVER})`}}>
                                             <div className = 'cardsection1-smallcard-content'>
-                                                <label className = 'cardsection1-card-date'>{data[0].RELEASEDATE.split('-')[0]}</label>
+                                                <label className = 'cardsection1-card-date'>{content.RELEASEDATE.split('-')[0]}</label>
                                                 <label>{content.TITLE}</label>
                                             </div>
                                         </div>
