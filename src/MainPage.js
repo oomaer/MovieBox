@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Navigation from './Navigation/Navigation';
-import {Redirect} from 'react-router-dom';
 import Content from './Content'
 import './mainpage.css';
 import Footer from './Footer/Footer';
@@ -13,6 +12,7 @@ class MainPage extends Component {
         <Navigation user = {this.props.user}/>
         <Content user = {this.props.user} setUser = {this.props.setUser}/>
         <Footer />
+       
       </div>
     );
 }

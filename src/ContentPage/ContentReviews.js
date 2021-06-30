@@ -151,6 +151,7 @@ const ContentReviews = ({user}) => {
             body: JSON.stringify({
                 content_id: id,
                 user_email: user.email,
+                rating: userReview.RATING
             })
         }).then(response => {
             if(!response.ok){  
@@ -191,7 +192,12 @@ const ContentReviews = ({user}) => {
             :(
             <div className = 'content-reviews-content'>
                 <h1>{content.TITLE}</h1>
-                <label id = 'fetchedreviewscount'>({reviews.length} reviews)</label>
+                {userReview !== undefined ? (
+                    <label id = 'fetchedreviewscount'>({reviews.length + 1} reviews)</label>
+                ):(
+                    <label id = 'fetchedreviewscount'>({reviews.length} reviews)</label>
+                )}
+                
                 {user.email === '' ? null 
                 :[userReview === undefined ? (
                     <div className = 'current-user-review'>
