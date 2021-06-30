@@ -16,6 +16,7 @@ class EditContent extends Component {
             voteCount: '',
             popularity: '',
             overview : '',
+            trailer: '',
             image: '',
             cover: '',
             type: '',
@@ -54,6 +55,7 @@ class EditContent extends Component {
                             voteCount: result.VOTECOUNT,
                             popularity: result.POPULARITY,
                             overview: result.OVERVIEW,
+                            trailer: result.TRAILER,
                             image: result.IMAGE,
                             cover: result.COVER,
                             type: result.TYPE
@@ -113,6 +115,10 @@ class EditContent extends Component {
         if(!(event.target.value > 100)){
             this.setState({popularity: event.target.value});
         }
+    }
+
+    onTrailerChange = (event) => {
+        this.setState({trailer: event.target.value});
     }
 
     onImageChange = (event) => {
@@ -234,7 +240,7 @@ class EditContent extends Component {
 
     render(){
 
-        const {content_found, content_id, title, releaseDate, runtime, tagline, voteAvg, voteCount, popularity, overview, image, cover, type, movie, tvshow, statusMsg, redirect} = this.state;
+        const {content_found, content_id, title, releaseDate, runtime, tagline, voteAvg, voteCount, popularity, overview, trailer, image, cover, type, movie, tvshow, statusMsg, redirect} = this.state;
         return(
             <div className = 'add-content-container'>
                 {redirect ? (<Redirect to="/"/>) : null }
@@ -266,6 +272,9 @@ class EditContent extends Component {
                         
                         <label>Overview</label>
                         <textarea maxLength = '1000' value = {overview} id = 'overview-textarea' onChange ={this.onOverViewChange}></textarea>
+
+                        <label>Trailer Link</label>
+                        <input type = 'url' maxLength = '500' value = {trailer} onChange = {this.onTrailerChange}></input>
 
                         <label>Image Link</label>
                         <input type = 'url' maxLength = '500' value = {image} onChange = {this.onImageChange}></input>

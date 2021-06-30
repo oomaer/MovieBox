@@ -14,6 +14,7 @@ class AddContent extends Component {
             voteCount: '',
             popularity: '',
             overview: '',
+            trailer: '',
             image: '',
             cover: '',
             type: 'movie',
@@ -64,6 +65,10 @@ class AddContent extends Component {
         if(!(event.target.value > 100)){
             this.setState({popularity: event.target.value});
         }
+    }
+
+    onTrailerChange = (event) => {
+        this.setState({trailer: event.target.value});
     }
 
     onImageChange = (event) => {
@@ -155,6 +160,7 @@ class AddContent extends Component {
                         voteCount: '',
                         popularity: '',
                         overview: '',
+                        trailer : '',
                         image: '',
                         cover: '',
                         type: 'movie',
@@ -180,7 +186,7 @@ class AddContent extends Component {
  
 
     render(){
-        const {title, releaseDate, runtime, tagline, voteAvg, voteCount, popularity, overview, image, cover, type, movie, tvshow, statusMsg, added_id} = this.state;
+        const {title, releaseDate, runtime, tagline, voteAvg, voteCount, popularity, overview, trailer, image, cover, type, movie, tvshow, statusMsg, added_id} = this.state;
         return(
             <div className = 'add-content-container'>
                 <div className = 'add-content-main'>
@@ -209,6 +215,9 @@ class AddContent extends Component {
                         
                         <label>Overview</label>
                         <textarea maxLength = '1000' id = 'overview-textarea' onChange ={this.onOverViewChange} value = {overview}></textarea>
+
+                        <label>Trailer Link</label>
+                        <input type = 'url' maxLength = '500' value = {trailer} onChange = {this.onTrailerChange}></input>
 
                         <label>Image Link</label>
                         <input type = 'url' maxLength = '500' value = {image} onChange = {this.onImageChange}></input>
