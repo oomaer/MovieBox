@@ -1,4 +1,5 @@
 import  {useState} from 'react';
+import {Link} from 'react-router-dom';
 import './contentdetailscard.css';
 
 const ContentDetailsCard = ({content, details}) => {
@@ -20,7 +21,7 @@ const ContentDetailsCard = ({content, details}) => {
     }
 
     let seasonbackground;
-    if(details.seasons != undefined && details.seasons.length !== 0 ){
+    if(details.seasons !== undefined && details.seasons.length !== 0 ){
        seasonbackground = {'background-image': `url(${details.seasons[currSeasonIndex].IMAGE})`};
     }
     return(
@@ -51,7 +52,7 @@ const ContentDetailsCard = ({content, details}) => {
                     </div>
                     <div className = 'content-details-card-topbar-right'>
                         <a href = {`${window.location.href.split('/#contentdetails-otherdetails-crew')[0]}/#contentdetails-otherdetails-crew`} >Full Cast and Crew</a>
-                        <a href = '' >User Reviews</a>
+                        <Link to = {`/content/${content.ID}/reviews`} >User Reviews</Link>
                     </div>
                 </div>
 
@@ -69,11 +70,12 @@ const ContentDetailsCard = ({content, details}) => {
                                         {details.crew.map((item, index) => {
                                             if(item.ROLE === 'Director'){
                                                 if(index === 0){
-                                                    return <label className = 'contentdetails-fg2'>{item.NAME} </label>
+                                                    return (<label className = 'contentdetails-fg2'>{item.NAME} </label>)
                                                 }
                                                 else{
-                                                    return <label className = 'contentdetails-fg2'>, {item.NAME} </label>
+                                                    return (<label className = 'contentdetails-fg2'>, {item.NAME} </label>)
                                                 }
+                                                
                                             }
                                         })}
                                     </div>
