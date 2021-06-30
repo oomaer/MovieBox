@@ -1,6 +1,7 @@
 .profile-details-btn{
     display: flex;
     align-items: center;
+    cursor:pointer;
 }
 
 #username{
@@ -33,7 +34,7 @@
     -moz-transition:height 200ms ease-in;
     -o-transition:height 200ms ease-in;
     transition:height 200ms ease-in;
-    background: var(--profile-dropdown-bg);
+    background: rgba(92, 92, 92, 0.329);
     font-family: var(--profile-details-font-family);
 
 }

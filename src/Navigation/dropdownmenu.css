@@ -14,6 +14,7 @@
     font-family: var(--drop-down-fontfamily);
     transition: 0.3s ease-out;
     transform: translateY(-100vh);
+    opacity: 0.93;
 }
 
 .sub-menus{
@@ -21,6 +22,9 @@
     flex-direction: row;
     flex-wrap: wrap;
     font-size: 110%; 
+}
+.sub-menus .sub-menu{
+    overflow: hidden;
 }
 
 /* making more space for the first row  of submenus in flexbox */

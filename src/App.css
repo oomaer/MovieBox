@@ -5,6 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
 :root{
 
   --opensans: 'Open Sans', sans-serif;
@@ -99,9 +100,10 @@
   --content-card-topbar-fg2: black;
   --content-card-body-bg: #0d1117;
   --content-card-body-fg: #f0f6fc;
-  --content-card-body-fg2: #a5a1a1;
+  --content-card-body-fg2: #9b9898;
+  --content-card-body-fg3: #e7e3e3;
   --content-card-body-pictures-bg: #202225;
-  --content-overivew-fontfamily: 'Montserrat', sans-serif;
+  --content-overivew-fontfamily: 'Baloo 2', cursive;
 
 
 

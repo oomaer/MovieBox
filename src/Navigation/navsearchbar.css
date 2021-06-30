@@ -17,20 +17,21 @@
     display: flex;
     border-radius: 0px 5px 5px 0px;
     outline:none;
-    background:none;
+    background: rgba(92, 92, 92, 0.329);
+    border: 1px solid rgb(56, 56, 56);
 }
 .nav-justify-center .search-input{
     background: none;
 }
 .nav-justify-center .search-input > input{
     border-radius: 0px 5px 5px 0px;
-    border-left: 1px solid lightslategray;
+    border-left: 1px solid rgb(56, 56, 56);
     background: none;
     color:whitesmoke;
     
 }
 #navbar-searchresults li{
-    background: black;
+    background: rgba(92, 92, 92, 0.329);
     color:white;
     cursor:pointer;
 }
@@ -61,7 +62,7 @@
 }
 
 .nav-searchbar-type ul{
-    border: 1px solid lightslategray;
+    border: 1px solid rgb(56, 56, 56);
     border-top: none;
     list-style: none;
     width: auto;
@@ -72,7 +73,7 @@
     font-size: 18px;
     box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
     margin:0;
-    background: black;
+    background: rgba(92, 92, 92, 0.329);
     position:relative;
     display:none;
     z-index:2;
