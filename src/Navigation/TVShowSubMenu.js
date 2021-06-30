@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import './submenu.css';
 
-const TVShowSubMenu = ({radioBtns, setRadioBtns, closeMenu}) => {
+const TVShowSubMenu = ({radioBtns, setRadioBtns, closeMenu, admin}) => {
    
     const uncheckRadio = () => {
         if(document.getElementById('TVShows').checked === true && radioBtns.tvshows === false){
@@ -30,6 +30,9 @@ const TVShowSubMenu = ({radioBtns, setRadioBtns, closeMenu}) => {
                 <li onClick = {closeMenu} className = 'submenu-list-item'><Link to = {`/filtertvshows/popularity`}>Most Popular TV Shows</Link></li>
                 <li onClick = {closeMenu} className = 'submenu-list-item'><Link to = {`/filtertvshows/rating`}>Browse Highest Rated</Link></li>
                 <li onClick = {closeMenu} className = 'submenu-list-item'><Link to = {`/news/tvshow`}>TV News</Link></li> 
+                {admin ? (
+                    <li onClick = {closeMenu} className = 'submenu-list-item'><Link to = {`/admin/addcontent`}>Add TV Series</Link></li> 
+                ):(null)}
             </ul>
 
         </div>

@@ -3,7 +3,7 @@ import {Route, useRouteMatch, Switch, Redirect} from "react-router-dom";
 import ProfileSettings from './Profiling/ProfileSettings';
 import Homepage from './Homepage/Homepage';
 import ContentPage from './ContentPage/ContentPage';
-import AddMain from './AddData/AddMain';
+import AdminPanel from './AddData/AdminPanel';
 import FilterContent from './Filter/FilterContent';
 import FilterCelebrity from './Filter/FilterCelebrity';
 import NewsAwardsEvents from './NewsAwardsEvents/NewsAwardsEvents';
@@ -24,7 +24,7 @@ const Content = ({user, setUser}) => {
           </Route>
           <Route exact path = {`${match.path}content/:id`}> 
             <ScrolltoTop />
-            <ContentPage admin = {true}/>  
+            <ContentPage admin = {user.admin}/>  
           </Route>
           <Route exact path = {`${match.path}content/:id/reviews`}> 
             <ScrolltoTop />
@@ -36,7 +36,7 @@ const Content = ({user, setUser}) => {
           </Route>
           <Route path = {`${match.path}admin`}>
             <ScrolltoTop />
-            <AddMain admin = {true}/>
+            <AdminPanel admin = {user.admin}/>
           </Route>
           <Route path = {`${match.path}filtermovies/:filter`}>
             <ScrolltoTop />
@@ -52,23 +52,23 @@ const Content = ({user, setUser}) => {
           </Route>
           <Route path = {`${match.path}:filter/movie`}>
             <ScrolltoTop />
-            <NewsAwardsEvents type = 'movie' admin = {true}/>
+            <NewsAwardsEvents type = 'movie' admin = {user.admin}/>
           </Route>
           <Route path = {`${match.path}:filter/tvshow`}>
             <ScrolltoTop />
-            <NewsAwardsEvents type = 'tvshow' admin = {true} />
+            <NewsAwardsEvents type = 'tvshow' admin = {user.admin} />
           </Route>
           <Route path = {`${match.path}:filter/latest`}>
             <ScrolltoTop />
-            <NewsAwardsEvents type = 'latest' admin = {true}/>
+            <NewsAwardsEvents type = 'latest' admin = {user.admin}/>
           </Route>
           <Route path = {`${match.path}:filter/popular`}>
             <ScrolltoTop />
-            <NewsAwardsEvents type = 'popular' admin = {true}/>
+            <NewsAwardsEvents type = 'popular' admin = {user.admin}/>
           </Route>
           <Route path = {`${match.path}celebrity/:id`}>
             <ScrolltoTop />
-            <CelebrityDetails admin = {true}/>
+            <CelebrityDetails admin = {user.admin}/>
           </Route>
         </Switch>
       </div>

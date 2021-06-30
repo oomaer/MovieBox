@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import './contentpagecover.css';
 
-const ContentPageCover = ({content, details}) => {
+const ContentPageCover = ({content, details, admin}) => {
     const backgroundimage = {'background-image': `url(${content.COVER})`};
     return(
         <div className = 'contentpage-cover-container' style = {backgroundimage}>
@@ -29,7 +29,9 @@ const ContentPageCover = ({content, details}) => {
                     </div>
                     <div className = 'content-details-cover-btns'>
                         <button id = 'watch-trailer-btn' className = ''>WATCH TRAILER</button>
-                        <Link to = {`/admin/editcontent/${content.ID}`}><button id = 'watch-trailer-btn' className = ''>Edit</button></Link>
+                        {admin ? (
+                            <Link to = {`/admin/editcontent/${content.ID}`}><button id = 'watch-trailer-btn' className = ''>Edit</button></Link>
+                        ):(null)}
                     </div>
                 </div>
             </div>

@@ -89,7 +89,7 @@ class ContentPage extends Component {
                 {found === false ? (<h1>404 Not Found</h1>)
                 :(
                 <div className = 'contentpage-content' id = {`content-page-content-${this.state.id}`}>
-                    <ContentPageCover content = {content} details = {details}/>
+                    <ContentPageCover content = {content} details = {details} admin = {this.props.admin}/>
                     <ContentDetailsCard content = {content} details = {details}/>
                 </div>
                 )}

@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import './submenu.css';
 import 'animate.css/animate.css';
 
-const MovieSubMenu = ({radioBtns, setRadioBtns, closeMenu}) => {
+const MovieSubMenu = ({radioBtns, setRadioBtns, closeMenu, admin}) => {
     
     const uncheckRadio = () => {
         if(document.getElementById('Movies').checked === true && radioBtns.movies === false){
@@ -35,6 +35,10 @@ const MovieSubMenu = ({radioBtns, setRadioBtns, closeMenu}) => {
                 <li onClick = {closeMenu} className = 'submenu-list-item'><Link to = {`/filtermovies/rating`}>Browse Highest Rated Movies</Link></li>
                 <li onClick = {closeMenu} className = 'submenu-list-item'><Link to = {`/filtermovies/boxoffice`}>Top Box Office</Link></li>
                 <li onClick = {closeMenu} className = 'submenu-list-item'><Link to = {`/news/movie`}>Movie News</Link></li>            
+                {admin ? (
+                    <li onClick = {closeMenu} className = 'submenu-list-item'><Link to = {`/admin/addcontent`}>Add Movie</Link></li> 
+                ):(null)}
+                
             </ul>
         </div>
     )

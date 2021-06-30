@@ -31,7 +31,7 @@ import TVShowSubMenu from './TVShowSubMenu';
     }, [ref]);
 }
 
-const DropDownMenu = ({closeMenu}) => {
+const DropDownMenu = ({closeMenu, admin}) => {
     //we will make a radio button for each submenu and assign a common radio group to them. For mobile display 
     //there is only one submenu displayed at a time, radio btns will be used for that. We will use state to check uncheck radio
     //buttons on mouse click
@@ -46,10 +46,10 @@ const DropDownMenu = ({closeMenu}) => {
             </div>
 
            <div className = 'sub-menus'>
-            <MovieSubMenu radioBtns = {radioBtns} setRadioBtns = {setRadioBtns} closeMenu = {closeMenu}/>
-            <TVShowSubMenu radioBtns = {radioBtns} setRadioBtns = {setRadioBtns} closeMenu = {closeMenu}/>
-            <AESubMenu radioBtns = {radioBtns} setRadioBtns = {setRadioBtns} closeMenu = {closeMenu}/>
-            <CelebritiesSubMenu radioBtns = {radioBtns} setRadioBtns = {setRadioBtns} closeMenu = {closeMenu}/>
+            <MovieSubMenu radioBtns = {radioBtns} setRadioBtns = {setRadioBtns} closeMenu = {closeMenu} admin = {admin}/>
+            <TVShowSubMenu radioBtns = {radioBtns} setRadioBtns = {setRadioBtns} closeMenu = {closeMenu} admin = {admin}/>
+            <AESubMenu radioBtns = {radioBtns} setRadioBtns = {setRadioBtns} closeMenu = {closeMenu} admin = {admin}/>
+            <CelebritiesSubMenu radioBtns = {radioBtns} setRadioBtns = {setRadioBtns} closeMenu = {closeMenu} admin = {admin}/>
             </div>
 
         </div>

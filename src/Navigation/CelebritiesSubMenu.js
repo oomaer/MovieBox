@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import './submenu.css';
 
-const CelebritiesSubMenu = ({radioBtns, setRadioBtns, closeMenu}) => {
+const CelebritiesSubMenu = ({radioBtns, setRadioBtns, closeMenu, admin}) => {
 
     const uncheckRadio = () => {
         if(document.getElementById('Celebrities').checked === true && radioBtns.celebrities === false){
@@ -30,6 +30,9 @@ const CelebritiesSubMenu = ({radioBtns, setRadioBtns, closeMenu}) => {
             <ul className = 'submenu-items-list animate__animated animate__fadeInDown animate__faster'>
                 <li onClick = {closeMenu} className = 'submenu-list-item'><Link to = {`/filtercelebrities/born`}>Born Today</Link></li>
                 <li onClick = {closeMenu} className = 'submenu-list-item'><Link to = {`/filtercelebrities/popularity`}>Most Popular Celebrities</Link></li>
+                {admin ? (
+                    <li onClick = {closeMenu} className = 'submenu-list-item'><Link to = {`/admin/addcelebrity`}>Add Celebrity</Link></li> 
+                ):(null)}
             </ul>
 
         </div>

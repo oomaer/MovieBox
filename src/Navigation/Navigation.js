@@ -22,7 +22,7 @@ const Navigation = ({user}) => {
                 <label for = 'dropdown-checkbox' >
                 <MenuButton className = 'menu-btn' />
                 </label>
-                <DropDownMenu className = 'drop-down-menu' closeMenu = {closeMenu} />
+                <DropDownMenu className = 'drop-down-menu' closeMenu = {closeMenu} admin = {user.admin}/>
             </div>
             <div className = 'nav-justify-center'>
                 <NavSearchBar />

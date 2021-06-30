@@ -11,7 +11,8 @@ class App extends Component {
     this.state = {
       user : {
         name: '',
-        email: ''
+        email: '',
+        admin:false
       }
     }
   }
